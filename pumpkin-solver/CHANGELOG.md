@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1](https://github.com/ConSol-Lab/Pumpkin/compare/pumpkin-solver-v0.2.0...pumpkin-solver-v0.2.1) (2025-04-30)
+
+
+### Bug Fixes
+
+* explain root assignments in recursive minimisation ([#173](https://github.com/ConSol-Lab/Pumpkin/issues/173)) ([c0eab65](https://github.com/ConSol-Lab/Pumpkin/commit/c0eab6504b412df48a76f0d317afce9e48762caa))
+* Properly explain root-level explanations that are not considered during conflict analysis ([#176](https://github.com/ConSol-Lab/Pumpkin/issues/176)) ([d237293](https://github.com/ConSol-Lab/Pumpkin/commit/d237293fddb8970df8ad0e5b89eaf98b19d4013b))
+* Update outdated documentation from before the v0.2 release ([#177](https://github.com/ConSol-Lab/Pumpkin/issues/177)) ([8e4009f](https://github.com/ConSol-Lab/Pumpkin/commit/8e4009fe45838f244e130ff4f6e4d3aa1f75ea5e))
+* Use variable inline in format string ([#180](https://github.com/ConSol-Lab/Pumpkin/issues/180)) ([35d5f47](https://github.com/ConSol-Lab/Pumpkin/commit/35d5f47698d11246a21f9d112459bfcdb031a090))
+
 ## [0.2.0](https://github.com/ConSol-Lab/Pumpkin/compare/pumpkin-solver-v0.1.4...pumpkin-solver-v0.2.0) (2025-04-11)
 
 
