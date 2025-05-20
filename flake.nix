@@ -55,7 +55,7 @@
 
           env = {
             # Required by rust-analyzer
-            RUST_SRC_PATH = "${pkgs.rustToolchain}/lib/rustlib/src/rust/library";
+            RUST_SRC_PATH = "${pkgs.rustPlatform.rustLibSrc}";
             MZN_SOLVER_PATH= "./minizinc";
           };
         };

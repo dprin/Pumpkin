@@ -1,6 +1,5 @@
-use std::fmt::Debug;
-
 use super::Constraint;
+use crate::propagators::disjunctive::not_first_not_last::NotFirstNotLastPropagator;
 use crate::pumpkin_assert_simple;
 use crate::variables::IntegerVariable;
 
@@ -17,7 +16,7 @@ pub fn disjunctive<StartTimes, Durations>(
 ) -> impl Constraint
 where
     StartTimes: IntoIterator,
-    StartTimes::Item: IntegerVariable + Debug + 'static,
+    StartTimes::Item: IntegerVariable + Copy + 'static,
     StartTimes::IntoIter: ExactSizeIterator,
     Durations: IntoIterator<Item = i32>,
     Durations::IntoIter: ExactSizeIterator,
@@ -27,6 +26,50 @@ where
 
     pumpkin_assert_simple!(start_times.len() == durations.len());
 
-    todo!("Call your Disjunctive propagator here!")
     // Disjunctive::new(start_times, durations)
+    let tasks: Vec<Task<StartTimes::Item>> = start_times
+        .into_iter()
+        .zip(durations.into_iter())
+        .map(|(s, d)| Task {
+            start_time: s,
+            processing_time: d,
+        })
+        .collect();
+
+    Disjunctive::<StartTimes::Item>::new(tasks)
+}
+
+/// Task variable which will store all tasks
+pub(crate) struct Task<Var> {
+    pub(crate) start_time: Var,
+    pub(crate) processing_time: i32,
+}
+
+struct Disjunctive<Var: IntegerVariable + 'static> {
+    tasks: Vec<Task<Var>>,
+}
+
+impl<Var: IntegerVariable + 'static> Disjunctive<Var> {
+    fn new(tasks: Vec<Task<Var>>) -> Self {
+        Self { tasks }
+    }
+}
+
+impl<Var: IntegerVariable + 'static> Constraint for Disjunctive<Var> {
+    fn post(
+        self,
+        solver: &mut crate::Solver,
+        tag: Option<std::num::NonZero<u32>>,
+    ) -> Result<(), crate::ConstraintOperationError> {
+        NotFirstNotLastPropagator::new(self.tasks).post(solver, tag)
+    }
+
+    fn implied_by(
+        self,
+        solver: &mut crate::Solver,
+        reification_literal: crate::variables::Literal,
+        tag: Option<std::num::NonZero<u32>>,
+    ) -> Result<(), crate::ConstraintOperationError> {
+        NotFirstNotLastPropagator::new(self.tasks).implied_by(solver, reification_literal, tag)
+    }
 }

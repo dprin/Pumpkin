@@ -30,6 +30,7 @@ mod constraint_poster;
 mod cumulative;
 mod disjunctive;
 mod element;
+mod theta;
 
 use std::num::NonZero;
 

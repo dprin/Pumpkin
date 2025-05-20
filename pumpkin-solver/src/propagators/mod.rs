@@ -13,3 +13,4 @@ pub use cumulative::CumulativeOptions;
 pub use cumulative::CumulativePropagationMethod;
 pub(crate) use cumulative::*;
 pub(crate) use reified_propagator::*;
+pub(crate) mod disjunctive;
