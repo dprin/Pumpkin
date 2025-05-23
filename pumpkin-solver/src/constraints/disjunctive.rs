@@ -1,4 +1,5 @@
 use super::Constraint;
+use crate::engine::Assignments;
 use crate::propagators::disjunctive::not_first_not_last::NotFirstNotLastPropagator;
 use crate::pumpkin_assert_simple;
 use crate::variables::IntegerVariable;
@@ -40,22 +41,33 @@ where
 }
 
 /// Task variable which will store all tasks
-pub(crate) struct Task<Var> {
+#[derive(PartialEq, Eq, Clone, Copy)]
+pub(crate) struct Task<Var: IntegerVariable> {
     pub(crate) start_time: Var,
     pub(crate) processing_time: i32,
 }
 
-struct Disjunctive<Var: IntegerVariable + 'static> {
+impl<Var: IntegerVariable> Task<Var> {
+    pub(crate) fn get_est(&self, assignments: &Assignments) -> i32 {
+        self.start_time.lower_bound(assignments)
+    }
+
+    pub(crate) fn get_lct(&self, assignments: &Assignments) -> i32 {
+        self.start_time.upper_bound(assignments) + self.processing_time
+    }
+}
+
+struct Disjunctive<Var: IntegerVariable + Copy + 'static> {
     tasks: Vec<Task<Var>>,
 }
 
-impl<Var: IntegerVariable + 'static> Disjunctive<Var> {
+impl<Var: IntegerVariable + Copy + 'static> Disjunctive<Var> {
     fn new(tasks: Vec<Task<Var>>) -> Self {
         Self { tasks }
     }
 }
 
-impl<Var: IntegerVariable + 'static> Constraint for Disjunctive<Var> {
+impl<Var: IntegerVariable + Copy + 'static> Constraint for Disjunctive<Var> {
     fn post(
         self,
         solver: &mut crate::Solver,

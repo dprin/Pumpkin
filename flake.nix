@@ -53,10 +53,13 @@
             minizinc
           ];
 
+          shellHook = ''
+            export MZN_SOLVER_PATH=$(git rev-parse --show-toplevel)/minizinc
+          '';
+
           env = {
             # Required by rust-analyzer
             RUST_SRC_PATH = "${pkgs.rustPlatform.rustLibSrc}";
-            MZN_SOLVER_PATH= "./minizinc";
           };
         };
       });

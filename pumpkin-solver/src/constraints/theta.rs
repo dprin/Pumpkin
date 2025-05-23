@@ -1,6 +1,6 @@
-use crate::engine::cp::propagation::contexts::propagation_context::ReadDomains;
+use crate::engine::Assignments;
 use crate::pumpkin_assert_simple;
-use crate::{engine::propagation::PropagationContext, variables::IntegerVariable};
+use crate::variables::IntegerVariable;
 use std::fmt::Debug;
 
 use super::Task;
@@ -8,30 +8,48 @@ use super::Task;
 #[derive(Debug)]
 pub(crate) struct Theta<Var>
 where
-    Var: Copy,
+    Var: IntegerVariable,
 {
-    /// start of the leaves
-    leaves_loc: usize,
     /// tree structure
     nodes: Vec<ThetaNode<Var>>,
 }
 
 impl<Var> Theta<Var>
 where
-    Var: Debug + Copy + IntegerVariable + 'static,
+    Var: IntegerVariable + 'static,
 {
     /// Creates a new Theta tree given amount of tasks.
     ///
     /// It uses the amount of tasks in order to prepare the vector.
-    pub(crate) fn new(amount: usize) -> Self {
+    pub(crate) fn new(tasks: Vec<Task<Var>>, assignments: &Assignments) -> Self {
+        let amount = tasks.len();
         pumpkin_assert_simple!(amount != 0, "Size of theta tree can't be 0!");
 
-        let nodes = vec![ThetaNode::default(); amount - 1];
+        let mut nodes = vec![ThetaNode::default(); amount - 1];
 
-        Self {
-            nodes,
-            leaves_loc: amount - 1,
+        nodes.extend(tasks.into_iter().map(|x| {
+            let var = x.start_time.clone();
+            let est = var.lower_bound(assignments);
+            let p = x.processing_time;
+
+            ThetaNode::Leaf {
+                id: var,
+                est,
+                ect: est + p,
+                duration: p,
+            }
+        }));
+
+        let mut tree = Self { nodes };
+
+        for i in (amount - 1)..(2 * amount - 1) {
+            if i == 0 {
+                continue;
+            }
+            tree.update(Self::parent(i));
         }
+
+        tree
     }
 
     #[inline]
@@ -51,52 +69,51 @@ where
         }
     }
 
-    /// inserts a new node into the tree.
-    pub(crate) fn insert(&mut self, task: &Task<Var>, context: PropagationContext) {
-        let est = context.lower_bound(&task.start_time);
+    // /// inserts a new node into the tree.
+    // pub(crate) fn insert(&mut self, task: &Task<Var>, context: PropagationContext) {
+    //     let est = context.lower_bound(&task.start_time);
 
-        let insert = if self.get_ect() == i32::MIN {
-            self.nodes.len()
-        } else {
-            // TODO: figure out how to do this in O(log n)
+    //     let insert = if self.get_ect() == i32::MIN {
+    //         self.nodes.len()
+    //     } else {
+    //         // TODO: figure out how to do this in O(log n)
 
-            // find start location
-            // return that
-            let mut i = self.leaves_loc;
+    //         // find start location
+    //         // return that
+    //         let mut i = self.leaves_loc;
 
-            for ind in self.leaves_loc..self.nodes.len() {
-                match self.nodes[ind] {
-                    ThetaNode::Leaf { est: node_est, .. } => {
-                        i = ind;
-                        if est >= node_est {
-                            break;
-                        }
-                    }
-                    _ => panic!("Should not have a node"),
-                }
-            }
+    //         for ind in self.leaves_loc..self.nodes.len() {
+    //             match self.nodes[ind] {
+    //                 ThetaNode::Leaf { est: node_est, .. } => {
+    //                     i = ind;
+    //                     if est >= node_est {
+    //                         break;
+    //                     }
+    //                 }
+    //                 _ => panic!("Should not have a node"),
+    //             }
+    //         }
 
-            dbg!(&self, &i);
-            i + 1
-        };
+    //         i + 1
+    //     };
 
-        self.nodes.insert(
-            insert,
-            ThetaNode::Leaf {
-                id: task.start_time,
-                est,
-                ect: est + task.processing_time,
-                duration: task.processing_time,
-            },
-        );
+    //     self.nodes.insert(
+    //         insert,
+    //         ThetaNode::Leaf {
+    //             id: task.start_time,
+    //             est,
+    //             ect: est + task.processing_time,
+    //             duration: task.processing_time,
+    //         },
+    //     );
 
-        // update nodes up
-        if insert != 0 {
-            self.update(Self::parent(insert));
-        }
-    }
+    //     // update nodes up
+    //     if insert != 0 {
+    //         self.update(Self::parent(insert));
+    //     }
+    // }
 
-    fn get_ect(&self) -> i32 {
+    pub(crate) fn get_ect(&self) -> i32 {
         if self.nodes.is_empty() {
             i32::MIN
         } else {
@@ -104,7 +121,7 @@ where
         }
     }
 
-    fn get_duration(&self) -> i32 {
+    pub(crate) fn get_duration(&self) -> i32 {
         if self.nodes.is_empty() {
             0
         } else {
@@ -119,22 +136,19 @@ mod theta_tests {
 
     use super::*;
 
-    // #[test]
-    // fn one_task() {
-    //     let mut solver = TestSolver::default();
-    //     let t1 = Task {
-    //         start_time: solver.new_variable(0, 15),
-    //         processing_time: 5,
-    //     };
+    #[test]
+    fn one_task() {
+        let mut solver = TestSolver::default();
+        let t1 = Task {
+            start_time: solver.new_variable(0, 15),
+            processing_time: 5,
+        };
 
-    //     let mut t = Theta::<DomainId>::new(1);
-    //     dbg!(&t);
+        let t: Theta<DomainId> = Theta::new(vec![t1], &solver.assignments);
 
-    //     t.insert(&t1, PropagationContext::new(&solver.assignments));
-
-    //     assert_eq!(t.get_ect(), 5);
-    //     assert_eq!(t.get_duration(), 5);
-    // }
+        assert_eq!(t.get_ect(), 5);
+        assert_eq!(t.get_duration(), 5);
+    }
 
     #[test]
     fn example() {
@@ -156,12 +170,7 @@ mod theta_tests {
             processing_time: 10,
         };
 
-        let mut t = Theta::<DomainId>::new(4);
-        t.insert(&t1, PropagationContext::new(&solver.assignments));
-        t.insert(&t2, PropagationContext::new(&solver.assignments));
-        t.insert(&t3, PropagationContext::new(&solver.assignments));
-        t.insert(&t4, PropagationContext::new(&solver.assignments));
-
+        let t: Theta<DomainId> = Theta::new(vec![t1, t2, t3, t4], &solver.assignments);
         dbg!(&t);
 
         assert_eq!(t.get_ect(), 45);
@@ -171,19 +180,19 @@ mod theta_tests {
 
 impl<Time> ThetaNode<Time>
 where
-    Time: Copy,
+    Time: IntegerVariable,
 {
-    fn get_duration(self) -> i32 {
+    fn get_duration(&self) -> i32 {
         match self {
-            ThetaNode::Leaf { duration, .. } => duration,
-            ThetaNode::Node { duration, .. } => duration,
+            ThetaNode::Leaf { duration, .. } => duration.clone(),
+            ThetaNode::Node { duration, .. } => duration.clone(),
         }
     }
 
-    fn get_ect(self) -> i32 {
+    fn get_ect(&self) -> i32 {
         match self {
-            ThetaNode::Leaf { ect, .. } => ect,
-            ThetaNode::Node { ect, .. } => ect,
+            ThetaNode::Leaf { ect, .. } => ect.clone(),
+            ThetaNode::Node { ect, .. } => ect.clone(),
         }
     }
 
@@ -197,7 +206,7 @@ where
 
 impl<Time> Default for ThetaNode<Time>
 where
-    Time: Copy,
+    Time: IntegerVariable,
 {
     fn default() -> Self {
         Self::Node {
@@ -209,7 +218,7 @@ where
 
 impl<Time> Default for &ThetaNode<Time>
 where
-    Time: Copy,
+    Time: IntegerVariable,
 {
     fn default() -> Self {
         &ThetaNode::Node {
@@ -219,10 +228,19 @@ where
     }
 }
 
-#[derive(Copy, Clone, Debug)]
+impl<Time> Clone for ThetaNode<Time>
+where
+    Time: IntegerVariable,
+{
+    fn clone(&self) -> Self {
+        ThetaNode::default()
+    }
+}
+
+#[derive(Debug)]
 enum ThetaNode<Time>
 where
-    Time: Copy,
+    Time: IntegerVariable,
 {
     Leaf {
         id: Time,

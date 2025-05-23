@@ -1,6 +1,8 @@
+use std::cell::RefCell;
+
 use crate::{
     basic_types::PropagationStatusCP,
-    constraints::Task,
+    constraints::{theta::Theta, Task},
     engine::{
         opaque_domain_event::OpaqueDomainEvent,
         propagation::{
@@ -9,34 +11,138 @@ use crate::{
             PropagatorInitialisationContext,
         },
     },
+    predicate,
     predicates::{Predicate, PropositionalConjunction},
     variables::IntegerVariable,
 };
 
-pub(crate) struct NotFirstNotLastPropagator<Var: IntegerVariable + 'static> {
+pub(crate) struct NotFirstNotLastPropagator<Var: IntegerVariable + Copy + 'static> {
     tasks: Vec<Task<Var>>,
 }
 
-impl<Var: IntegerVariable + 'static> NotFirstNotLastPropagator<Var> {
+impl<Var: IntegerVariable + Copy + 'static> NotFirstNotLastPropagator<Var> {
     pub(crate) fn new(tasks: Vec<Task<Var>>) -> Self {
         Self { tasks }
     }
+
+    fn not_last(&self, ctx: &RefCell<PropagationContextMut>) -> PropagationStatusCP {
+        let mut context = ctx.borrow_mut();
+
+        for t in &self.tasks {
+            let nl_set: Vec<_> = self
+                .tasks
+                .clone()
+                .into_iter()
+                .filter(|x| {
+                    x.get_lct(&context.assignments) - x.processing_time
+                        < t.get_lct(&context.assignments)
+                        && x.start_time.domain_id() != t.start_time.domain_id()
+                })
+                .collect();
+
+            if nl_set.is_empty() {
+                continue;
+            }
+
+            let tree = Theta::new(nl_set.clone(), &context.assignments);
+
+            if tree.get_ect() > t.get_lct(&context.assignments) - t.processing_time {
+                let new_lct = nl_set
+                    .into_iter()
+                    .map(|x| x.get_lct(&context.assignments) - x.processing_time)
+                    .max()
+                    .unwrap_or(t.get_lct(&context.assignments));
+
+                let reason: PropositionalConjunction = self
+                    .tasks
+                    .iter()
+                    .flat_map(|task| {
+                        vec![
+                            predicate![task.start_time >= task.get_est(&context.assignments)],
+                            predicate![task.start_time <= task.get_lct(&context.assignments)],
+                        ]
+                    })
+                    .collect();
+
+                context.set_upper_bound(&t.start_time, new_lct, reason)?;
+            }
+        }
+
+        Ok(())
+    }
+
+    /// Propagator for not first
+    ///
+    /// returns whether there was a change in bounds
+    #[allow(dead_code)]
+    fn not_first(&self, ctx: &RefCell<PropagationContextMut>) -> PropagationStatusCP {
+        assert!(self
+            .tasks
+            .iter()
+            .is_sorted_by(|a, b| a.processing_time >= b.processing_time));
+
+        let mut context = ctx.borrow_mut();
+
+        for i in 0..self.tasks.len() {
+            let est_i = self.tasks[i].get_est(&context.assignments);
+            let mut lst = i32::MAX;
+            let mut eft = i32::MAX;
+
+            for j in 0..self.tasks.len() {
+                let est_j = self.tasks[j].get_est(&context.assignments);
+                let lct_j = self.tasks[j].get_lct(&context.assignments);
+
+                if est_j + self.tasks[j].processing_time <= est_i || i == j {
+                    continue;
+                }
+
+                lst = i32::min(lct_j, lst) - self.tasks[j].processing_time;
+                eft = i32::min(est_j + self.tasks[j].processing_time, eft);
+
+                if lst >= est_i + self.tasks[i].processing_time {
+                    continue;
+                }
+
+                let reason: PropositionalConjunction = self
+                    .tasks
+                    .iter()
+                    .flat_map(|task| {
+                        vec![
+                            predicate![task.start_time >= task.get_est(&context.assignments)],
+                            predicate![task.start_time <= task.get_lct(&context.assignments)],
+                        ]
+                    })
+                    .collect();
+
+                context.set_lower_bound(&self.tasks[i].start_time, eft, reason)?;
+
+                break;
+            }
+        }
+        Ok(())
+    }
 }
 
-impl<Var: IntegerVariable + 'static> Propagator for NotFirstNotLastPropagator<Var> {
+impl<Var: IntegerVariable + Copy + 'static> Propagator for NotFirstNotLastPropagator<Var> {
     fn name(&self) -> &str {
         "Not-First/Not-Last"
     }
 
     fn debug_propagate_from_scratch(&self, context: PropagationContextMut) -> PropagationStatusCP {
-        todo!()
+        let ctx = RefCell::new(context);
+        self.not_last(&ctx)?;
+
+        Ok(())
     }
 
     fn initialise_at_root(
         &mut self,
         _: &mut PropagatorInitialisationContext,
     ) -> Result<(), PropositionalConjunction> {
-        todo!()
+        // self.tasks
+        //     .sort_by(|a, b| b.processing_time.cmp(&a.processing_time));
+
+        Ok(())
     }
 
     fn propagate(&mut self, context: PropagationContextMut) -> PropagationStatusCP {
