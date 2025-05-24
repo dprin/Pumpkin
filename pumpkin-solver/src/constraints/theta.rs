@@ -8,7 +8,7 @@ use super::Task;
 #[derive(Debug)]
 pub(crate) struct Theta<Var>
 where
-    Var: IntegerVariable,
+    Var: IntegerVariable + Debug,
 {
     /// tree structure
     nodes: Vec<ThetaNode<Var>>,
@@ -16,19 +16,20 @@ where
 
 impl<Var> Theta<Var>
 where
-    Var: IntegerVariable + 'static,
+    Var: IntegerVariable + Debug + 'static,
 {
     /// Creates a new Theta tree given amount of tasks.
     ///
     /// It uses the amount of tasks in order to prepare the vector.
     pub(crate) fn new(tasks: Vec<Task<Var>>, assignments: &Assignments) -> Self {
-        let amount = tasks.len();
-        pumpkin_assert_simple!(amount != 0, "Size of theta tree can't be 0!");
+        let len = tasks.len();
+        pumpkin_assert_simple!(len != 0, "Size of theta tree can't be 0!");
+        let amount = len.next_power_of_two();
 
         let mut nodes = vec![ThetaNode::default(); amount - 1];
 
-        nodes.extend(tasks.into_iter().map(|x| {
-            let var = x.start_time.clone();
+        nodes.extend(tasks.iter().map(|x| {
+            let var = x.var.clone();
             let est = var.lower_bound(assignments);
             let p = x.processing_time;
 
@@ -39,6 +40,18 @@ where
                 duration: p,
             }
         }));
+        let mut dummy_nodes: Vec<ThetaNode<Var>> = Vec::with_capacity(amount - len);
+
+        for _ in 0..(amount - len) {
+            let id = tasks[0].var.clone();
+
+            dummy_nodes.push(ThetaNode::Leaf {
+                id,
+                est: i32::MIN,
+                ect: i32::MIN,
+                duration: 0,
+            });
+        }
 
         let mut tree = Self { nodes };
 
@@ -121,6 +134,7 @@ where
         }
     }
 
+    #[allow(dead_code)]
     pub(crate) fn get_duration(&self) -> i32 {
         if self.nodes.is_empty() {
             0
@@ -132,7 +146,10 @@ where
 
 #[cfg(test)]
 mod theta_tests {
-    use crate::{engine::test_solver::TestSolver, variables::DomainId};
+    use crate::{
+        engine::{propagation::LocalId, test_solver::TestSolver},
+        variables::DomainId,
+    };
 
     use super::*;
 
@@ -140,8 +157,9 @@ mod theta_tests {
     fn one_task() {
         let mut solver = TestSolver::default();
         let t1 = Task {
-            start_time: solver.new_variable(0, 15),
+            var: solver.new_variable(0, 15),
             processing_time: 5,
+            local_id: LocalId::from(1),
         };
 
         let t: Theta<DomainId> = Theta::new(vec![t1], &solver.assignments);
@@ -154,19 +172,23 @@ mod theta_tests {
     fn example() {
         let mut solver = TestSolver::default();
         let t1 = Task {
-            start_time: solver.new_variable(0, 15),
+            var: solver.new_variable(0, 15),
+            local_id: LocalId::from(1),
             processing_time: 5,
         };
         let t2 = Task {
-            start_time: solver.new_variable(25, 31),
+            var: solver.new_variable(25, 31),
+            local_id: LocalId::from(1),
             processing_time: 6,
         };
         let t3 = Task {
-            start_time: solver.new_variable(30, 34),
+            local_id: LocalId::from(1),
+            var: solver.new_variable(30, 34),
             processing_time: 4,
         };
         let t4 = Task {
-            start_time: solver.new_variable(32, 42),
+            local_id: LocalId::from(1),
+            var: solver.new_variable(32, 42),
             processing_time: 10,
         };
 
