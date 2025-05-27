@@ -5,7 +5,7 @@ use crate::engine::propagation::LocalId;
 use crate::engine::Assignments;
 use crate::propagators::disjunctive::not_first_not_last::NotFirstNotLastPropagator;
 use crate::pumpkin_assert_simple;
-use crate::variables::{IntegerVariable, TransformableVariable};
+use crate::variables::IntegerVariable;
 
 /// Creates the [Disjunctive](https://sofdem.github.io/gccat/gccat/Cdisjunctive.html) [`Constraint`].
 ///
@@ -60,6 +60,10 @@ impl<Var: IntegerVariable> Task<Var> {
         self.var.lower_bound(assignments)
     }
 
+    pub(crate) fn get_ect(&self, assignments: &Assignments) -> i32 {
+        self.var.lower_bound(assignments) + self.processing_time
+    }
+
     pub(crate) fn get_lct(&self, assignments: &Assignments) -> i32 {
         self.var.upper_bound(assignments) + self.processing_time
     }
@@ -71,25 +75,11 @@ impl<Var: IntegerVariable> Task<Var> {
 
 struct Disjunctive<Var: IntegerVariable + Copy + 'static> {
     tasks: Vec<Task<Var>>,
-    reverse_tasks: Vec<Task<<<Var as IntegerVariable>::AffineView as IntegerVariable>::AffineView>>,
 }
 
 impl<Var: IntegerVariable + Copy + 'static> Disjunctive<Var> {
     fn new(tasks: Vec<Task<Var>>) -> Self {
-        let reverse_tasks: Vec<_> = tasks
-            .clone()
-            .into_iter()
-            .map(|x| Task {
-                var: x.var.offset(x.processing_time).scaled(-1),
-                processing_time: x.processing_time,
-                local_id: x.local_id,
-            })
-            .collect();
-
-        Self {
-            tasks,
-            reverse_tasks,
-        }
+        Self { tasks }
     }
 }
 

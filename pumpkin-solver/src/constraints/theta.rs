@@ -21,21 +21,25 @@ where
     /// Creates a new Theta tree given amount of tasks.
     ///
     /// It uses the amount of tasks in order to prepare the vector.
-    pub(crate) fn new(tasks: Vec<Task<Var>>, assignments: &Assignments) -> Self {
+    pub(crate) fn new(tasks: &mut Vec<Task<Var>>, assignments: &Assignments) -> Self {
         let len = tasks.len();
         pumpkin_assert_simple!(len != 0, "Size of theta tree can't be 0!");
         let amount = len.next_power_of_two();
 
         let mut nodes = vec![ThetaNode::default(); amount - 1];
 
+        tasks.sort_by(|a, b| a.get_est(assignments).cmp(&b.get_est(assignments)));
+
         nodes.extend(tasks.iter().map(|x| {
             let var = x.var.clone();
-            let est = var.lower_bound(assignments);
             let p = x.processing_time;
+            let est = var.lower_bound(assignments);
+            let lct = var.upper_bound(assignments) + p;
 
             ThetaNode::Leaf {
                 id: var,
                 est,
+                lct,
                 ect: est + p,
                 duration: p,
             }
@@ -49,6 +53,7 @@ where
                 id,
                 est: i32::MIN,
                 ect: i32::MIN,
+                lct: i32::MIN,
                 duration: 0,
             });
         }
@@ -82,55 +87,19 @@ where
         }
     }
 
-    // /// inserts a new node into the tree.
-    // pub(crate) fn insert(&mut self, task: &Task<Var>, context: PropagationContext) {
-    //     let est = context.lower_bound(&task.start_time);
-
-    //     let insert = if self.get_ect() == i32::MIN {
-    //         self.nodes.len()
-    //     } else {
-    //         // TODO: figure out how to do this in O(log n)
-
-    //         // find start location
-    //         // return that
-    //         let mut i = self.leaves_loc;
-
-    //         for ind in self.leaves_loc..self.nodes.len() {
-    //             match self.nodes[ind] {
-    //                 ThetaNode::Leaf { est: node_est, .. } => {
-    //                     i = ind;
-    //                     if est >= node_est {
-    //                         break;
-    //                     }
-    //                 }
-    //                 _ => panic!("Should not have a node"),
-    //             }
-    //         }
-
-    //         i + 1
-    //     };
-
-    //     self.nodes.insert(
-    //         insert,
-    //         ThetaNode::Leaf {
-    //             id: task.start_time,
-    //             est,
-    //             ect: est + task.processing_time,
-    //             duration: task.processing_time,
-    //         },
-    //     );
-
-    //     // update nodes up
-    //     if insert != 0 {
-    //         self.update(Self::parent(insert));
-    //     }
-    // }
-
     pub(crate) fn get_ect(&self) -> i32 {
         if self.nodes.is_empty() {
             i32::MIN
         } else {
             self.nodes[0].get_ect()
+        }
+    }
+
+    pub(crate) fn get_lct(&self) -> i32 {
+        if self.nodes.is_empty() {
+            i32::MIN
+        } else {
+            self.nodes[0].get_lct()
         }
     }
 
@@ -162,7 +131,7 @@ mod theta_tests {
             local_id: LocalId::from(1),
         };
 
-        let t: Theta<DomainId> = Theta::new(vec![t1], &solver.assignments);
+        let t: Theta<DomainId> = Theta::new(&mut vec![t1], &solver.assignments);
 
         assert_eq!(t.get_ect(), 5);
         assert_eq!(t.get_duration(), 5);
@@ -192,11 +161,83 @@ mod theta_tests {
             processing_time: 10,
         };
 
-        let t: Theta<DomainId> = Theta::new(vec![t1, t2, t3, t4], &solver.assignments);
-        dbg!(&t);
+        let t: Theta<DomainId> = Theta::new(&mut vec![t1, t2, t3, t4], &solver.assignments);
 
         assert_eq!(t.get_ect(), 45);
         assert_eq!(t.get_duration(), 25);
+    }
+
+    #[test]
+    fn three_nodes() {
+        let mut solver = TestSolver::default();
+        let t1 = Task {
+            var: solver.new_variable(0, 10),
+            processing_time: 5,
+            local_id: LocalId::from(1),
+        };
+        let t2 = Task {
+            var: solver.new_variable(2, 4),
+            processing_time: 3,
+            local_id: LocalId::from(2),
+        };
+        let t3 = Task {
+            var: solver.new_variable(11, 15),
+            processing_time: 10,
+            local_id: LocalId::from(3),
+        };
+
+        let t: Theta<DomainId> = Theta::new(&mut vec![t1, t2, t3], &solver.assignments);
+        assert_eq!(t.get_ect(), 21);
+    }
+
+    #[test]
+    fn two_nodes() {
+        let mut solver = TestSolver::default();
+        let t1 = Task {
+            var: solver.new_variable(0, 10),
+            processing_time: 5,
+            local_id: LocalId::from(1),
+        };
+        let t2 = Task {
+            var: solver.new_variable(11, 15),
+            processing_time: 10,
+            local_id: LocalId::from(3),
+        };
+        let t: Theta<DomainId> = Theta::new(&mut vec![t1, t2], &solver.assignments);
+        assert_eq!(t.get_ect(), 21);
+    }
+
+    #[test]
+    fn five_nodes() {
+        let mut solver = TestSolver::default();
+        let t1 = Task {
+            var: solver.new_variable(0, 10),
+            processing_time: 5,
+            local_id: LocalId::from(1),
+        };
+        let t2 = Task {
+            var: solver.new_variable(2, 4),
+            processing_time: 3,
+            local_id: LocalId::from(2),
+        };
+        let t3 = Task {
+            var: solver.new_variable(11, 15),
+            processing_time: 10,
+            local_id: LocalId::from(3),
+        };
+        let t4 = Task {
+            var: solver.new_variable(13, 24),
+            processing_time: 2,
+            local_id: LocalId::from(4),
+        };
+        let t5 = Task {
+            var: solver.new_variable(14, 26),
+            processing_time: 1,
+            local_id: LocalId::from(5),
+        };
+
+        let t: Theta<DomainId> = Theta::new(&mut vec![t1, t2, t3, t4, t5], &solver.assignments);
+        assert_eq!(t.get_ect(), 24);
     }
 }
 
@@ -218,11 +259,18 @@ where
         }
     }
 
+    fn get_lct(&self) -> i32 {
+        match self {
+            ThetaNode::Leaf { lct, .. } => lct.clone(),
+            ThetaNode::Node { lct, .. } => lct.clone(),
+        }
+    }
+
     fn combine(left: &Self, right: &Self) -> Self {
         let duration = left.get_duration() + right.get_duration();
         let ect = i32::max(right.get_ect(), left.get_ect() + right.get_duration());
-
-        ThetaNode::Node { duration, ect }
+        let lct = i32::max(left.get_lct(), right.get_lct());
+        ThetaNode::Node { duration, ect, lct }
     }
 }
 
@@ -233,6 +281,7 @@ where
     fn default() -> Self {
         Self::Node {
             duration: 0,
+            lct: i32::MIN,
             ect: i32::MIN,
         }
     }
@@ -245,6 +294,7 @@ where
     fn default() -> Self {
         &ThetaNode::Node {
             duration: 0,
+            lct: i32::MIN,
             ect: i32::MIN,
         }
     }
@@ -267,11 +317,13 @@ where
     Leaf {
         id: Time,
         est: i32,
+        lct: i32,
         ect: i32,
         duration: i32,
     },
     Node {
         duration: i32,
         ect: i32,
+        lct: i32,
     },
 }

@@ -1,4 +1,4 @@
-use std::{cell::RefCell, fmt::Debug};
+use std::{cell::RefCell, fmt::Debug, fs::OpenOptions, io::Write};
 
 use itertools::Itertools;
 
@@ -21,77 +21,151 @@ use crate::{
 
 pub(crate) struct NotFirstNotLastPropagator<Var: IntegerVariable + Copy + Debug + 'static> {
     tasks: Vec<Task<Var>>,
+    tasks_lst: Vec<Task<Var>>,
 }
 
 impl<Var: IntegerVariable + Debug + Copy + 'static> NotFirstNotLastPropagator<Var> {
     pub(crate) fn new(tasks: Vec<Task<Var>>) -> Self {
-        Self { tasks }
+        Self {
+            tasks: tasks.clone(),
+            tasks_lst: tasks,
+        }
     }
 
-    fn not_last(&self, ctx: &RefCell<PropagationContextMut>) -> PropagationStatusCP {
+    fn not_first(
+        tasks: &Vec<Task<Var>>,
+        ctx: &RefCell<PropagationContextMut>,
+    ) -> PropagationStatusCP {
         let mut context = ctx.borrow_mut();
+        let mut tasks = tasks.clone();
+        tasks.sort_by(|a, b| {
+            a.get_est(&context.assignments)
+                .cmp(&b.get_est(&context.assignments))
+        });
 
-        for i in &self.tasks {
-            let nl_set: Vec<_> = self
-                .tasks
-                .clone()
-                .into_iter()
-                .filter(|j| {
-                    j.get_lst(&context.assignments) < i.get_lct(&context.assignments)
-                        && j.local_id != i.local_id
-                })
-                .collect();
+        let len = tasks.len();
 
-            // dbg!(&nl_set
-            //     .iter()
-            //     .map(|x| x.get_est(&context.assignments))
-            //     .collect::<Vec<_>>());
+        let reason: PropositionalConjunction = tasks
+            .iter()
+            .flat_map(|task| {
+                vec![
+                    predicate![task.var >= task.var.lower_bound(&context.assignments)],
+                    predicate![task.var <= task.var.upper_bound(&context.assignments)],
+                ]
+            })
+            .collect();
 
-            if nl_set.is_empty() {
+        for i in tasks.iter() {
+            let est_i = i.get_est(&context.assignments);
+            let mut max_lct = i32::MIN;
+            let mut p = 0;
+            let mut set: Vec<&Task<Var>> = Vec::with_capacity(len);
+
+            for j in tasks.iter() {
+                if est_i > j.get_est(&context.assignments) {
+                    break;
+                }
+
+                if i.local_id == j.local_id {
+                    continue;
+                }
+
+                max_lct = i32::max(max_lct, j.get_lct(&context.assignments));
+                p += j.processing_time;
+
+                set.push(j);
+            }
+
+            if set.is_empty() {
                 continue;
             }
 
-            let tree = Theta::new(nl_set.clone(), &context.assignments);
+            if max_lct - est_i < p + i.processing_time {
+                let mut min_ect = i32::MAX;
 
-            if tree.get_ect() > i.get_lst(&context.assignments) {
-                // println!(
-                //     "tree: {:#?}\nwith lst {} and tree.ect {}",
-                //     tree,
-                //     t.get_lst(&context.assignments),
-                //     tree.get_ect(),
-                // );
-                let biggest_task = nl_set
-                    .into_iter()
-                    .sorted_by(|a, b| {
-                        let b = b.get_lst(&context.assignments);
-                        let a = a.get_lst(&context.assignments);
+                for j in set {
+                    min_ect = i32::min(min_ect, j.get_ect(&context.assignments));
+                }
 
-                        b.cmp(&a)
-                    })
-                    .next()
-                    .expect("Should not be empty because nl set was asserted not to be");
+                if est_i > min_ect {
+                    continue;
+                }
 
-                let new_lst = biggest_task.get_lst(&context.assignments) - i.processing_time;
-
-                let reason: PropositionalConjunction = self
-                    .tasks
-                    .iter()
-                    .flat_map(|task| {
-                        vec![
-                            predicate![task.var >= task.var.lower_bound(&context.assignments)],
-                            predicate![task.var <= task.var.upper_bound(&context.assignments)],
-                        ]
-                    })
-                    .collect();
-                // println!(
-                //     "Setting {:?} from {:?} to {:?}",
-                //     &t.local_id,
-                //     &t.get_lst(&context.assignments),
-                //     new_lst
-                // );
-
-                context.set_upper_bound(&i.var, new_lst, reason)?;
+                context.set_upper_bound(&i.var, min_ect, reason.clone())?;
             }
+        }
+
+        Ok(())
+    }
+
+    fn not_last(
+        tasks: &Vec<Task<Var>>,
+        tasks_lst: &Vec<Task<Var>>,
+        ctx: &RefCell<PropagationContextMut>,
+    ) -> PropagationStatusCP {
+        // Create vec of old lsts that will be used to update the list
+        let mut context = ctx.borrow_mut();
+        let mut new_lsts: Vec<_> = tasks
+            .iter()
+            .map(|x| x.get_lst(&context.assignments))
+            .collect();
+
+        let reason: PropositionalConjunction = tasks
+            .iter()
+            .flat_map(|task| {
+                vec![
+                    predicate![task.var >= task.var.lower_bound(&context.assignments)],
+                    predicate![task.var <= task.var.upper_bound(&context.assignments)],
+                ]
+            })
+            .collect();
+
+        for i in 0..tasks.len() {
+            let i_task = tasks[i];
+            let lct_i = i_task.get_lct(&context.assignments);
+
+            // take all tasks that could be used
+            let mut set: Vec<Task<Var>> = Vec::with_capacity(tasks.len());
+
+            for j in tasks_lst {
+                if lct_i <= j.get_lst(&context.assignments) {
+                    break;
+                }
+
+                if i_task.local_id == j.local_id {
+                    continue;
+                }
+
+                set.push(j.clone());
+            }
+
+            if set.is_empty() {
+                continue;
+            }
+
+            let theta = Theta::new(&mut (set.clone()), &context.assignments);
+
+            // if ECT_theta > LST_i
+            if theta.get_ect() > i_task.get_lst(&context.assignments) {
+                new_lsts[i] = i32::min(
+                    set[0].get_lst(&context.assignments) - i_task.processing_time,
+                    new_lsts[i],
+                );
+            }
+        }
+
+        // update all lsts
+        for i in 0..new_lsts.len() {
+            if tasks[i].get_lst(&context.assignments) == new_lsts[i] {
+                continue;
+            }
+
+            assert!(
+                tasks[i].get_lst(&context.assignments) > new_lsts[i],
+                "Attempted to put a higher LST for a task"
+            );
+
+            context.set_upper_bound(&tasks[i].var, new_lsts[i], reason.clone())?;
         }
 
         Ok(())
@@ -105,7 +179,40 @@ impl<Var: IntegerVariable + Copy + Debug + 'static> Propagator for NotFirstNotLa
 
     fn debug_propagate_from_scratch(&self, context: PropagationContextMut) -> PropagationStatusCP {
         let ctx = RefCell::new(context);
-        self.not_last(&ctx)?;
+        // let mut f = OpenOptions::new()
+        //     .append(true)
+        //     .create(true)
+        //     .open("hahaha")
+        //     .expect("could not open file");
+
+        // let _ = f
+        //     .write_all("before: ".as_bytes())
+        //     .expect("could not newline");
+        // f.flush();
+
+        // for t in &self.tasks {
+        //     let context = ctx.borrow();
+        //     let _ = f
+        //         .write_all(format!("{} ", t.get_lct(&context.assignments)).as_bytes())
+        //         .expect("could not write_all");
+        // }
+        // let _ = f
+        //     .write_all("\nafter: ".as_bytes())
+        //     .expect("could not newline");
+        // f.flush();
+
+        Self::not_first(&self.tasks, &ctx)?;
+        Self::not_last(&self.tasks, &self.tasks_lst, &ctx)?;
+
+        // for t in &self.tasks {
+        //     let context = ctx.borrow();
+        //     let _ = f
+        //         .write_all(format!("{} ", t.get_lct(&context.assignments)).as_bytes())
+        //         .expect("could not write");
+        // }
+
+        // let _ = f.write_all("\n".as_bytes()).expect("could not newline");
+        // f.flush();
 
         Ok(())
     }
@@ -121,7 +228,9 @@ impl<Var: IntegerVariable + Copy + Debug + 'static> Propagator for NotFirstNotLa
         let assignments = &init.assignments;
 
         self.tasks
-            .sort_by(|a, b| a.get_est(assignments).cmp(&b.get_est(assignments)));
+            .sort_by(|a, b| a.get_lct(assignments).cmp(&b.get_lct(assignments)));
+        self.tasks_lst
+            .sort_by(|a, b| a.get_lst(assignments).cmp(&b.get_lst(assignments)));
 
         Ok(())
     }
@@ -218,7 +327,7 @@ mod nl_tests {
 
         let tasks = vec![t1, t2, t3, t4, t5, t6];
 
-        let propagator = solver.new_propagator(NotFirstNotLastPropagator::new(tasks));
+        let _propagator = solver.new_propagator(NotFirstNotLastPropagator::new(tasks));
         // .expect("fail");
 
         // let result = solver.propagate(propagator);

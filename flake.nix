@@ -48,9 +48,11 @@
             cargo-edit
             cargo-watch
             rust-analyzer
+            python313Packages.ortools
 
             python312
             minizinc
+            bash-language-server
           ];
 
           shellHook = ''
