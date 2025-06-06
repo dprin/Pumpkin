@@ -1,4 +1,5 @@
 use enumset::EnumSet;
+use std::hash::Hash;
 
 use super::DomainId;
 use super::TransformableVariable;
@@ -17,7 +18,7 @@ use std::fmt::Debug;
 pub trait IntegerVariable:
     Clone + Debug + PredicateConstructor<Value = i32> + TransformableVariable<Self::AffineView>
 {
-    type AffineView: IntegerVariable;
+    type AffineView: IntegerVariable + Eq + Hash + Copy;
 
     fn domain_id(&self) -> DomainId;
 

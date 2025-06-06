@@ -48,10 +48,11 @@
             cargo-edit
             cargo-watch
             rust-analyzer
-            python313Packages.ortools
+            gdb
 
             python312
             minizinc
+            minizincide
             bash-language-server
           ];
 

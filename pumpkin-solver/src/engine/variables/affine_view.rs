@@ -1,4 +1,5 @@
 use std::cmp::Ordering;
+use std::hash::Hash;
 
 use enumset::EnumSet;
 
@@ -49,7 +50,7 @@ impl<Inner> AffineView<Inner> {
     }
 }
 
-impl<View> IntegerVariable for AffineView<View>
+impl<View: Copy + Eq + Hash> IntegerVariable for AffineView<View>
 where
     View: IntegerVariable,
 {

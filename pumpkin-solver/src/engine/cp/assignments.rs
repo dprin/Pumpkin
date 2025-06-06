@@ -1234,6 +1234,7 @@ impl IntegerDomain {
     }
 
     fn get_update_info(&self, predicate: &Predicate) -> Option<PairDecisionLevelTrailPosition> {
+        // eprintln!("{}", predicate);
         // Perhaps the recursion could be done in a cleaner way,
         // e.g., separate functions dependibng on the type of predicate.
         // For the initial version, the current version is okay.
@@ -1250,6 +1251,12 @@ impl IntegerDomain {
 
                 // find the update with smallest lower bound
                 // that is greater than or equal to the input lower bound
+
+                // eprintln!(
+                //     "trying to find {} in {:?}",
+                //     lower_bound, self.lower_bound_updates
+                // );
+
                 self.lower_bound_updates
                     .iter()
                     .find(|u| u.bound >= *lower_bound)
@@ -1270,13 +1277,18 @@ impl IntegerDomain {
 
                 // find the update with greatest upper bound
                 // that is smaller than or equal to the input upper bound
-                self.upper_bound_updates
+                // dbg!(upper_bound);
+                // dbg!(&self.upper_bound_updates);
+                let ret = self
+                    .upper_bound_updates
                     .iter()
                     .find(|u| u.bound <= *upper_bound)
                     .map(|u| PairDecisionLevelTrailPosition {
                         decision_level: u.decision_level,
                         trail_position: u.trail_position,
-                    })
+                    });
+                // dbg!(ret);
+                ret
             }
             Predicate::NotEqual {
                 domain_id,

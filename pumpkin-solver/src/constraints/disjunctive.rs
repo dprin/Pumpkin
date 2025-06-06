@@ -1,4 +1,5 @@
 use std::fmt::Debug;
+use std::hash::Hash;
 
 use super::Constraint;
 use crate::engine::propagation::LocalId;
@@ -20,7 +21,7 @@ pub fn disjunctive<StartTimes, Durations>(
 ) -> impl Constraint
 where
     StartTimes: IntoIterator,
-    StartTimes::Item: IntegerVariable + Copy + Debug + 'static,
+    StartTimes::Item: IntegerVariable + Eq + Hash + Copy + Debug + 'static,
     StartTimes::IntoIter: ExactSizeIterator,
     Durations: IntoIterator<Item = i32>,
     Durations::IntoIter: ExactSizeIterator,
@@ -48,20 +49,16 @@ where
 }
 
 /// Task variable which will store all tasks
-#[derive(PartialEq, Eq, Clone, Copy)]
-pub(crate) struct Task<Var: IntegerVariable> {
+#[derive(PartialEq, Debug, Eq, Clone, Copy, Hash)]
+pub(crate) struct Task<Var: IntegerVariable + Debug> {
     pub(crate) var: Var,
     pub(crate) processing_time: i32,
     pub(crate) local_id: LocalId,
 }
 
-impl<Var: IntegerVariable> Task<Var> {
+impl<Var: IntegerVariable + Debug> Task<Var> {
     pub(crate) fn get_est(&self, assignments: &Assignments) -> i32 {
         self.var.lower_bound(assignments)
-    }
-
-    pub(crate) fn get_ect(&self, assignments: &Assignments) -> i32 {
-        self.var.lower_bound(assignments) + self.processing_time
     }
 
     pub(crate) fn get_lct(&self, assignments: &Assignments) -> i32 {
@@ -71,19 +68,28 @@ impl<Var: IntegerVariable> Task<Var> {
     pub(crate) fn get_lst(&self, assignments: &Assignments) -> i32 {
         self.var.upper_bound(assignments)
     }
+
+    pub(crate) fn to_string(&self, assignments: &Assignments) -> String {
+        format!(
+            "Task {:?}: {} - {}",
+            self.var,
+            self.get_est(assignments),
+            self.get_lst(assignments)
+        )
+    }
 }
 
-struct Disjunctive<Var: IntegerVariable + Copy + 'static> {
+struct Disjunctive<Var: IntegerVariable + Eq + Hash + Copy + 'static> {
     tasks: Vec<Task<Var>>,
 }
 
-impl<Var: IntegerVariable + Copy + 'static> Disjunctive<Var> {
+impl<Var: IntegerVariable + Copy + Eq + Hash + 'static> Disjunctive<Var> {
     fn new(tasks: Vec<Task<Var>>) -> Self {
         Self { tasks }
     }
 }
 
-impl<Var: IntegerVariable + Copy + Debug + 'static> Constraint for Disjunctive<Var> {
+impl<Var: IntegerVariable + Copy + Eq + Hash + Debug + 'static> Constraint for Disjunctive<Var> {
     fn post(
         self,
         solver: &mut crate::Solver,
