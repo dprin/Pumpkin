@@ -6,19 +6,16 @@ use std::fmt::Debug;
 use super::Task;
 
 #[derive(Debug)]
-pub(crate) struct Theta {
+pub(crate) struct Theta<Var: IntegerVariable + Copy + Debug> {
     /// tree structure
-    nodes: Vec<ThetaNode>,
+    nodes: Vec<ThetaNode<Var>>,
 }
 
-impl Theta {
+impl<Var: IntegerVariable + Copy + Debug + 'static> Theta<Var> {
     /// Creates a new Theta tree given amount of tasks.
     ///
     /// It uses the amount of tasks in order to prepare the vector.
-    pub(crate) fn new<Var: IntegerVariable + Copy + Debug + 'static>(
-        tasks: &mut Vec<Task<Var>>,
-        assignments: &Assignments,
-    ) -> Self {
+    pub(crate) fn new(tasks: &mut Vec<Task<Var>>, assignments: &Assignments) -> Self {
         let len = tasks.len();
         pumpkin_assert_simple!(len != 0, "Size of theta tree can't be 0!");
         let amount = len.next_power_of_two();
@@ -33,13 +30,14 @@ impl Theta {
             let lct = x.get_lct(assignments);
 
             ThetaNode::Leaf {
+                var: x.clone(),
                 est,
                 lct,
                 ect: est + duration,
                 duration,
             }
         }));
-        let mut dummy_nodes: Vec<ThetaNode> = Vec::with_capacity(amount - len);
+        let mut dummy_nodes: Vec<ThetaNode<Var>> = Vec::with_capacity(amount - len);
 
         for _ in 0..(amount - len) {
             dummy_nodes.push(ThetaNode::default());
@@ -58,6 +56,27 @@ impl Theta {
     }
 
     #[inline]
+    fn get_right(index: usize) -> usize {
+        (index * 2) + 2
+    }
+
+    fn get_leftest(&self, index: usize) -> usize {
+        let mut left = index;
+
+        loop {
+            let test = 2 * left + 2;
+
+            if test > self.nodes.len() {
+                break;
+            }
+
+            left = test;
+        }
+
+        left
+    }
+
+    #[inline]
     fn parent(index: usize) -> usize {
         (index - 1) / 2
     }
@@ -72,6 +91,24 @@ impl Theta {
         if index != 0 {
             self.update((index - 1) / 2);
         }
+    }
+
+    pub(crate) fn get_ect_diff(tasks: &Vec<Task<Var>>, assignments: &Assignments) -> i32 {
+        let mut tasks = tasks.clone();
+        let mut ans;
+
+        loop {
+            let th = Self::new(&mut (tasks.clone()), assignments);
+            ans = th.get_ect();
+
+            if ans == th.get_est() + th.get_duration() {
+                break;
+            }
+
+            tasks = tasks[1..].to_vec();
+        }
+
+        ans
     }
 
     pub(crate) fn get_ect(&self) -> i32 {
@@ -109,7 +146,10 @@ impl Theta {
 
 #[cfg(test)]
 mod theta_tests {
-    use crate::engine::{propagation::LocalId, test_solver::TestSolver};
+    use crate::{
+        engine::{propagation::LocalId, test_solver::TestSolver},
+        variables::DomainId,
+    };
 
     use super::*;
 
@@ -122,7 +162,7 @@ mod theta_tests {
             local_id: LocalId::from(1),
         };
 
-        let t: Theta = Theta::new(&mut vec![t1], &solver.assignments);
+        let t: Theta<DomainId> = Theta::new(&mut vec![t1], &solver.assignments);
 
         assert_eq!(t.get_ect(), 5);
         assert_eq!(t.get_duration(), 5);
@@ -152,7 +192,7 @@ mod theta_tests {
             processing_time: 10,
         };
 
-        let t: Theta = Theta::new(&mut vec![t1, t2, t3, t4], &solver.assignments);
+        let t: Theta<DomainId> = Theta::new(&mut vec![t1, t2, t3, t4], &solver.assignments);
 
         assert_eq!(t.get_ect(), 45);
         assert_eq!(t.get_duration(), 25);
@@ -177,7 +217,7 @@ mod theta_tests {
             local_id: LocalId::from(3),
         };
 
-        let t: Theta = Theta::new(&mut vec![t1, t2, t3], &solver.assignments);
+        let t: Theta<DomainId> = Theta::new(&mut vec![t1, t2, t3], &solver.assignments);
         assert_eq!(t.get_ect(), 21);
     }
 
@@ -194,7 +234,7 @@ mod theta_tests {
             processing_time: 10,
             local_id: LocalId::from(3),
         };
-        let t: Theta = Theta::new(&mut vec![t1, t2], &solver.assignments);
+        let t: Theta<DomainId> = Theta::new(&mut vec![t1, t2], &solver.assignments);
         assert_eq!(t.get_ect(), 21);
     }
 
@@ -227,12 +267,12 @@ mod theta_tests {
             local_id: LocalId::from(5),
         };
 
-        let t: Theta = Theta::new(&mut vec![t1, t2, t3, t4, t5], &solver.assignments);
+        let t: Theta<DomainId> = Theta::new(&mut vec![t1, t2, t3, t4, t5], &solver.assignments);
         assert_eq!(t.get_ect(), 24);
     }
 }
 
-impl ThetaNode {
+impl<Var: IntegerVariable + Copy + Debug> ThetaNode<Var> {
     fn get_duration(&self) -> i32 {
         match self {
             ThetaNode::Leaf { duration, .. } => duration.clone(),
@@ -266,9 +306,15 @@ impl ThetaNode {
         let ect = i32::max(right.get_ect(), left.get_ect() + right.get_duration());
         let lct = i32::max(left.get_lct(), right.get_lct());
         let est = i32::min(left.get_est(), right.get_est());
+        let inf = if ect == right.get_ect() {
+            Influence::Right
+        } else {
+            Influence::Left
+        };
 
         ThetaNode::Node {
             duration,
+            inf,
             ect,
             lct,
             est,
@@ -276,10 +322,11 @@ impl ThetaNode {
     }
 }
 
-impl Default for ThetaNode {
+impl<Var: IntegerVariable + Copy + Debug> Default for ThetaNode<Var> {
     fn default() -> Self {
         Self::Node {
             duration: 0,
+            inf: Influence::Left,
             lct: i32::MIN,
             est: i32::MAX,
             ect: i32::MIN,
@@ -287,32 +334,41 @@ impl Default for ThetaNode {
     }
 }
 
-impl Default for &ThetaNode {
+impl<Var: IntegerVariable + Copy + Debug> Default for &ThetaNode<Var> {
     fn default() -> Self {
         &ThetaNode::Node {
             duration: 0,
+            inf: Influence::Left,
             lct: i32::MIN,
-            ect: i32::MIN,
             est: i32::MAX,
+            ect: i32::MIN,
         }
     }
 }
 
-impl Clone for ThetaNode {
+impl<Var: IntegerVariable + Copy + Debug> Clone for ThetaNode<Var> {
     fn clone(&self) -> Self {
         ThetaNode::default()
     }
 }
 
-#[derive(Debug)]
-enum ThetaNode {
+#[derive(Debug, Copy, Clone)]
+enum Influence {
+    Left,
+    Right,
+}
+
+#[derive(Debug, Copy)]
+enum ThetaNode<Var: IntegerVariable + Copy + Debug> {
     Leaf {
+        var: Task<Var>,
         est: i32,
         lct: i32,
         ect: i32,
         duration: i32,
     },
     Node {
+        inf: Influence,
         est: i32,
         duration: i32,
         ect: i32,

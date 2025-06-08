@@ -1234,7 +1234,6 @@ impl IntegerDomain {
     }
 
     fn get_update_info(&self, predicate: &Predicate) -> Option<PairDecisionLevelTrailPosition> {
-        // eprintln!("{}", predicate);
         // Perhaps the recursion could be done in a cleaner way,
         // e.g., separate functions dependibng on the type of predicate.
         // For the initial version, the current version is okay.

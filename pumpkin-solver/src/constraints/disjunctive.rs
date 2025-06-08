@@ -71,8 +71,9 @@ impl<Var: IntegerVariable + Debug> Task<Var> {
 
     pub(crate) fn to_string(&self, assignments: &Assignments) -> String {
         format!(
-            "Task {:?}: {} - {}",
+            "Task {:?} ({}): {} - {}",
             self.var,
+            self.processing_time,
             self.get_est(assignments),
             self.get_lst(assignments)
         )

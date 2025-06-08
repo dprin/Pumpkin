@@ -25,16 +25,17 @@ enum ExplanationStrategy {
 }
 
 const STRATEGY: ExplanationStrategy = ExplanationStrategy::Normal;
+const MAX_SIZE_TO_SUBSET: usize = 10;
 
 // copied from https://stackoverflow.com/questions/40718975/how-to-get-every-subset-of-a-vector-in-rust
-#[allow(dead_code)]
-fn powerset<T>(s: &Vec<T>) -> Vec<Vec<&T>> {
+fn powerset<T: Copy>(s: &Vec<T>) -> Vec<Vec<T>> {
     (0..2usize.pow(s.len() as u32))
         .map(|i| {
             s.iter()
                 .enumerate()
                 .filter(|&(t, _)| (i >> t) % 2 == 1)
                 .map(|(_, element)| element)
+                .copied()
                 .collect()
         })
         .collect()
@@ -70,10 +71,38 @@ fn overload_check<Var: IntegerVariable + Copy + Debug + Eq + 'static>(
 }
 
 fn handle_set<'a, Var: IntegerVariable + Copy + Debug + 'static>(
-    tasks: &'a mut Vec<Task<Var>>,
-) -> &'a mut Vec<Task<Var>> {
+    tasks: Vec<Task<Var>>,
+    i: &'a Task<Var>,
+    assignments: &Assignments,
+) -> Vec<Task<Var>> {
     match STRATEGY {
-        ExplanationStrategy::Advanced => unimplemented!("Advnaced strategy not yet implemented"),
+        ExplanationStrategy::Advanced => {
+            if tasks.len() > MAX_SIZE_TO_SUBSET {
+                return tasks;
+            }
+
+            let mut current_best = (tasks.clone(), i32::MAX);
+
+            for subset in powerset(&tasks).iter().cloned() {
+                if subset.is_empty() {
+                    continue;
+                }
+
+                let max_lst = subset
+                    .iter()
+                    .max_by_key(|x| x.get_lst(assignments))
+                    .unwrap()
+                    .get_lst(assignments);
+
+                let theta = Theta::new(&mut subset.clone(), assignments);
+
+                if theta.get_ect() > i.get_lst(assignments) && max_lst < current_best.1 {
+                    current_best = (subset, max_lst);
+                }
+            }
+
+            current_best.0
+        }
         _ => tasks,
     }
 }
@@ -95,113 +124,48 @@ fn naive_reason<'a, Var: IntegerVariable + Eq + Copy + Debug + 'static>(
 }
 
 #[inline]
-fn check_propagation<Var: IntegerVariable + Eq + Copy + Debug + 'static>(
-    tasks: &mut Vec<Task<Var>>,
-    i: &Task<Var>,
-    assignments: &Assignments,
-    new_value: i32,
-) -> bool {
-    let theta = Theta::new(tasks, assignments);
-    let mut max_lst = i32::MIN;
-
-    for t in &mut *tasks {
-        max_lst = i32::max(max_lst, t.get_lst(assignments));
-    }
-
-    let condition = theta.get_ect() > i.get_lst(assignments);
-    let assignment = max_lst - i.processing_time == new_value;
-
-    if !condition {
-        eprintln!(
-            "CONDITION DIDN'T WORK: ect: {} and lst: {}",
-            theta.get_ect(),
-            i.get_lst(assignments)
-        );
-    }
-
-    if !assignment {
-        eprintln!(
-            "ASSIGNMENT DIDN'T WORK: list: {:?} and new lst: {} and p: {}",
-            tasks
-                .iter()
-                .map(|x| x.to_string(assignments))
-                .collect::<Vec<_>>(),
-            new_value,
-            i.processing_time
-        );
-    }
-
-    condition && assignment
-}
-
-#[inline]
 fn generate_reason<'a, Var: IntegerVariable + Eq + Copy + Debug + 'static>(
     all_tasks: &'a Vec<Task<Var>>,
     tasks: &'a Vec<Task<Var>>,
     i: &'a Task<Var>,
     assignments: &'a Assignments,
-    set_process: i32,
     new_value: i32,
 ) -> Result<PropositionalConjunction, Inconsistency> {
     match STRATEGY {
         ExplanationStrategy::Naive => Ok(naive_reason(assignments, all_tasks)),
         _ => {
-            let lower = i.get_lst(assignments) - set_process + 1;
+            let mut tasks = tasks.clone();
+            tasks.sort_by_key(|x| x.get_est(assignments));
+
+            loop {
+                let th = Theta::new(&mut (tasks.clone()), assignments);
+
+                if th.get_ect() == th.get_est() + th.get_duration() {
+                    break;
+                }
+
+                tasks = tasks[1..].to_vec();
+            }
+
+            let theta = Theta::new(&mut (tasks.clone()), assignments);
+
+            let lower = i.get_lst(assignments) - theta.get_duration() + 1;
             let upper = new_value + i.processing_time;
 
-            eprintln!(
-                "before: {:?}",
-                tasks
-                    .iter()
-                    .map(|x| x.to_string(assignments))
-                    .collect::<Vec<_>>()
-            );
-            let tasks: Vec<_> = tasks
-                .into_iter()
-                .copied()
-                .filter(|x| x.get_est(assignments) >= lower)
-                .collect();
-
-            assert!(
-                check_propagation(&mut (tasks.clone()), i, assignments, new_value),
-                "Propagation does not work after trimming"
-            );
-
-            // eprintln!(
-            //     "explanation for {:?} with lst' {} and p {}: {} - {}",
-            //     i.var,
-            //     new_value,
-            //     i.processing_time,
-            //     i.get_est(assignments),
-            //     i.get_lst(assignments)
-            // );
-            // eprintln!("Duration of set: {}", set_process);
-            let reason: PropositionalConjunction = tasks
+            let mut reason: PropositionalConjunction = tasks
                 .iter()
                 .flat_map(|task| -> Result<Vec<Predicate>, Inconsistency> {
-                    let lowest = task.var.lower_bound_at_trail_position(assignments, 0);
-                    let highest = task.var.upper_bound_at_trail_position(assignments, 0);
-                    let est = task.get_est(assignments);
-                    let lst = task.get_lst(assignments);
                     let mut ret: Vec<Predicate> = Vec::with_capacity(2);
 
                     ret.push(predicate![task.var >= lower]);
                     ret.push(predicate![task.var <= upper]);
-
-                    // eprintln!(
-                    //     "{:?} d: {} -> {} - {}, <{} - {}> ({} - {})",
-                    //     task.var, task.processing_time, est, lst, lower, upper, lowest, highest
-                    // );
 
                     Ok(ret)
                 })
                 .flatten()
                 .collect();
 
-            // reason.add(predicate![i.var <= i.get_lct(assignments)]);
-            // dbg!(&reason);
-
-            // eprintln!();
+            reason.add(predicate![i.var <= i.get_lst(assignments)]);
 
             Ok(reason)
         }
@@ -229,17 +193,10 @@ fn not_last<Var: IntegerVariable + Debug + Eq + Hash + Copy + Debug + 'static>(
     tasks_lst: &mut Vec<Task<Var>>,
     ctx: &RefCell<PropagationContextMut>,
 ) -> PropagationStatusCP {
-    // eprintln!("-------------------------------------------------------");
-
     let mut context = ctx.borrow_mut();
-    tasks.sort_by(|a, b| {
-        a.get_lct(&context.assignments)
-            .cmp(&b.get_lct(&context.assignments))
-    });
-    tasks_lst.sort_by(|a, b| {
-        a.get_lst(&context.assignments)
-            .cmp(&b.get_lst(&context.assignments))
-    });
+
+    tasks.sort_by_key(|x| x.get_lct(&context.assignments));
+    tasks_lst.sort_by_key(|x| x.get_lst(&context.assignments));
 
     // Create vec of old lsts that will be used to update the list
     let mut new_lsts: Vec<(i32, PropositionalConjunction)> = tasks
@@ -247,13 +204,9 @@ fn not_last<Var: IntegerVariable + Debug + Eq + Hash + Copy + Debug + 'static>(
         .map(|x| (x.get_lst(&context.assignments), vec![].into()))
         .collect();
 
-    // check that tasks are sorted by lct and lst accordingly
-    assert!(tasks.is_sorted_by_key(|t| t.get_lct(&context.assignments)));
-    assert!(tasks_lst.is_sorted_by_key(|t| t.get_lst(&context.assignments)));
-
-    for i in 0..tasks.len() {
-        let i_task = tasks[i];
-        let lct_i = i_task.get_lct(&context.assignments);
+    for i_ind in 0..tasks.len() {
+        let i = tasks[i_ind];
+        let lct_i = i.get_lct(&context.assignments);
 
         // take all tasks that could be used
         let mut set: Vec<Task<Var>> = Vec::with_capacity(tasks.len());
@@ -261,8 +214,9 @@ fn not_last<Var: IntegerVariable + Debug + Eq + Hash + Copy + Debug + 'static>(
 
         let mut j: Option<&Task<Var>> = None;
 
+        // while lct_i > lst of q_first
         while !queue.is_empty() && lct_i > queue[0].get_lst(&context.assignments) {
-            if queue[0].local_id == i_task.local_id {
+            if queue[0].local_id == i.local_id {
                 let _ = queue.pop_front().unwrap();
                 continue;
             }
@@ -275,45 +229,30 @@ fn not_last<Var: IntegerVariable + Debug + Eq + Hash + Copy + Debug + 'static>(
             continue;
         }
 
-        let set = handle_set(&mut set);
-        let theta = Theta::new(set, &context.assignments);
+        let mut set = handle_set(set, &i, &context.assignments);
+        let theta = Theta::new(&mut set, &context.assignments);
 
         // if ECT_theta > LST_i
-        if theta.get_ect() > i_task.get_lst(&context.assignments) {
+        // if Theta::(set, &context.assignments) > i_task.get_lst(&context.assignments) {
+        if theta.get_ect() > i.get_lst(&context.assignments) {
             overload_check(set.clone(), &context.assignments)?;
 
             let new_lst = i32::min(
-                j.unwrap().get_lst(&context.assignments) - i_task.processing_time,
-                new_lsts[i].0,
+                new_lsts[i_ind].0,
+                j.unwrap().get_lst(&context.assignments) - i.processing_time,
             );
 
-            if new_lst == new_lsts[i].0 {
-                continue;
-            }
-
-            eprintln!("{}", j.unwrap().to_string(&context.assignments));
-
-            let reason = generate_reason(
-                &tasks,
-                &set,
-                &i_task,
-                &context.assignments,
-                theta.get_duration(),
-                new_lst,
-            )?;
-            new_lsts[i] = (new_lst, reason);
+            let reason = generate_reason(&tasks, &set, &i, &context.assignments, new_lst)?;
+            new_lsts[i_ind] = (new_lst, reason);
         }
     }
 
     // update all lsts
     for i in 0..new_lsts.len() {
         let task = tasks[i];
-        if task.get_lst(&context.assignments) == new_lsts[i].0 {
-            continue;
-        }
 
         assert!(
-            task.get_lst(&context.assignments) > new_lsts[i].0,
+            task.get_lst(&context.assignments) >= new_lsts[i].0,
             "Attempted to put a higher LST for a task"
         );
 
@@ -334,12 +273,8 @@ impl<Var: IntegerVariable + Copy + Hash + Eq + Debug + 'static> Propagator
         let ctx = RefCell::new(context);
 
         let context = ctx.borrow();
-        let assignments = &context.assignments;
         let mut tasks = self.tasks.clone();
         let mut tasks_lst = self.tasks_lst.clone();
-
-        tasks.sort_by(|a, b| a.get_lct(assignments).cmp(&b.get_lct(assignments)));
-        tasks_lst.sort_by(|a, b| a.get_lst(assignments).cmp(&b.get_lst(assignments)));
 
         let mut rev_tasks: Vec<_> = self
             .tasks
@@ -378,8 +313,6 @@ impl<Var: IntegerVariable + Copy + Hash + Eq + Debug + 'static> Propagator
             )
             .collect();
 
-        rev_tasks.sort_by_key(|x| x.get_lct(assignments));
-        rev_sorted.sort_by_key(|x| x.get_lst(assignments));
         drop(context);
 
         not_last(&mut tasks, &mut tasks_lst, &ctx)?;

@@ -48,6 +48,7 @@
             cargo-edit
             cargo-watch
             rust-analyzer
+            rustup
             gdb
 
             python312
