@@ -1,0 +1,1583 @@
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=164
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=165
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=0
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=0
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=0
+%%%mzn-stat: objective=184
+%%%mzn-stat: engineStatisticsNumDecisions=164
+%%%mzn-stat: engineStatisticsNumConflicts=0
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=973
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=8
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=0
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=0
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=0
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=0
+%%%mzn-stat: notFirst/notLastNumber66Used=1717
+%%%mzn-stat: notFirst/notLastNumber66Unused=11589
+%%%mzn-stat: notFirst/notLastNumber67Used=1717
+%%%mzn-stat: notFirst/notLastNumber67Unused=11589
+%%%mzn-stat: notFirst/notLastNumber68Used=1717
+%%%mzn-stat: notFirst/notLastNumber68Unused=11589
+%%%mzn-stat: notFirst/notLastNumber69Used=1717
+%%%mzn-stat: notFirst/notLastNumber69Unused=11589
+%%%mzn-stat-end
+t_end = 184
+  0  81  86 103 106 110 113 117
+ 14  68  72  75  79  83  87  93
+  5  14 130 136 143 146 150 167
+ 95  98 150 154 157 161 168 172
+ 55  64  90  94  99 111 123 132
+  1  11  20 126 157 160 165 178
+126 142 153 157 160 163 169 176
+100 121 127 130 134 150 153 181
+% time elapsed: 0.08 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=326
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=328
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=0
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=0
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=0
+%%%mzn-stat: objective=183
+%%%mzn-stat: engineStatisticsNumDecisions=326
+%%%mzn-stat: engineStatisticsNumConflicts=0
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=1511
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=14
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=0
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=0
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=0
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=0
+%%%mzn-stat: notFirst/notLastNumber66Used=3146
+%%%mzn-stat: notFirst/notLastNumber66Unused=21659
+%%%mzn-stat: notFirst/notLastNumber67Used=3146
+%%%mzn-stat: notFirst/notLastNumber67Unused=21659
+%%%mzn-stat: notFirst/notLastNumber68Used=3146
+%%%mzn-stat: notFirst/notLastNumber68Unused=21659
+%%%mzn-stat: notFirst/notLastNumber69Used=3146
+%%%mzn-stat: notFirst/notLastNumber69Unused=21659
+%%%mzn-stat-end
+t_end = 183
+ 37  55 144 147 150 154 157 163
+ 61 156 160 163 167 171 175 178
+  0   5   8  20  24  68  72 180
+116 138 153 160 163 167 170 174
+  0   4   8  13  19  28  40  60
+ 34  37  55 111 115 118 121 125
+ 16  31  41  45  52  56  72 105
+ 97 101 107 110 114 118 134 138
+% time elapsed: 0.09 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=502
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=505
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=0
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=0
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=0
+%%%mzn-stat: objective=182
+%%%mzn-stat: engineStatisticsNumDecisions=502
+%%%mzn-stat: engineStatisticsNumConflicts=0
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=2002
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=20
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=0
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=0
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=0
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=0
+%%%mzn-stat: notFirst/notLastNumber66Used=4672
+%%%mzn-stat: notFirst/notLastNumber66Unused=32255
+%%%mzn-stat: notFirst/notLastNumber67Used=4672
+%%%mzn-stat: notFirst/notLastNumber67Unused=32255
+%%%mzn-stat: notFirst/notLastNumber68Used=4672
+%%%mzn-stat: notFirst/notLastNumber68Unused=32255
+%%%mzn-stat: notFirst/notLastNumber69Used=4672
+%%%mzn-stat: notFirst/notLastNumber69Unused=32255
+%%%mzn-stat-end
+t_end = 182
+109 114 118 121 124 151 154 159
+  0   3   7  18  34 171 175 178
+ 76  82  87  91 105 118 147 150
+ 23 147 150 156 163 167 170 174
+  0   7  12  87 108 138 141 179
+ 22  25  47  51 124 138 163 178
+  8  13  16  73 103 106 110 175
+ 10  28  41  44  48  52 102 170
+% time elapsed: 0.10 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=675
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=679
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=0
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=0
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=0
+%%%mzn-stat: objective=178
+%%%mzn-stat: engineStatisticsNumDecisions=675
+%%%mzn-stat: engineStatisticsNumConflicts=0
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=2631
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=27
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=0
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=0
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=0
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=0
+%%%mzn-stat: notFirst/notLastNumber66Used=6247
+%%%mzn-stat: notFirst/notLastNumber66Unused=43101
+%%%mzn-stat: notFirst/notLastNumber67Used=6247
+%%%mzn-stat: notFirst/notLastNumber67Unused=43101
+%%%mzn-stat: notFirst/notLastNumber68Used=6247
+%%%mzn-stat: notFirst/notLastNumber68Unused=43101
+%%%mzn-stat: notFirst/notLastNumber69Used=6247
+%%%mzn-stat: notFirst/notLastNumber69Unused=43101
+%%%mzn-stat-end
+t_end = 178
+ 87  95 127 130 133 137 141 145
+ 87  91  95 103 112 115 127 133
+ 22  48 115 149 153 156 160 170
+ 80  94  99 104 111 119 122 169
+ 68  72 114 117 121 125 134 140
+100 130 143 150 158 161 164 174
+  7  12  15  19  22  26  30  33
+128 131 138 146 154 160 168 173
+% time elapsed: 0.11 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=860
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=865
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=0
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=0
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=0
+%%%mzn-stat: objective=177
+%%%mzn-stat: engineStatisticsNumDecisions=860
+%%%mzn-stat: engineStatisticsNumConflicts=0
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=3349
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=34
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=0
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=0
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=0
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=0
+%%%mzn-stat: notFirst/notLastNumber66Used=7969
+%%%mzn-stat: notFirst/notLastNumber66Unused=54876
+%%%mzn-stat: notFirst/notLastNumber67Used=7969
+%%%mzn-stat: notFirst/notLastNumber67Unused=54876
+%%%mzn-stat: notFirst/notLastNumber68Used=7969
+%%%mzn-stat: notFirst/notLastNumber68Unused=54876
+%%%mzn-stat: notFirst/notLastNumber69Used=7969
+%%%mzn-stat: notFirst/notLastNumber69Unused=54876
+%%%mzn-stat-end
+t_end = 177
+102 106 110 132 141 148 156 160
+ 26  29  51  54  58  98 126 165
+  0  13  16  39  48  72 102 105
+  0  26  29  33  41  45  91  98
+  0   5  15  87  91 124 146 166
+  9  26  61 149 153 157 160 167
+  9  13  16  20  23  47  91 173
+ 92  95  99 102 110 159 162 171
+% time elapsed: 0.12 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=989
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=995
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=0
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=0
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=0
+%%%mzn-stat: objective=176
+%%%mzn-stat: engineStatisticsNumDecisions=989
+%%%mzn-stat: engineStatisticsNumConflicts=0
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=3937
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=40
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=0
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=0
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=0
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=0
+%%%mzn-stat: notFirst/notLastNumber66Used=9264
+%%%mzn-stat: notFirst/notLastNumber66Unused=64091
+%%%mzn-stat: notFirst/notLastNumber67Used=9264
+%%%mzn-stat: notFirst/notLastNumber67Unused=64091
+%%%mzn-stat: notFirst/notLastNumber68Used=9264
+%%%mzn-stat: notFirst/notLastNumber68Unused=64091
+%%%mzn-stat: notFirst/notLastNumber69Used=9264
+%%%mzn-stat: notFirst/notLastNumber69Unused=64091
+%%%mzn-stat-end
+t_end = 176
+  1   5   9  29  38  99 117 121
+ 36  40  49  52  58  62  66  69
+  1   5   8  12  18  21  25 109
+ 35  49 151 155 158 162 165 169
+  5 151 155 158 162 166 169 173
+ 20  23  30  54  66  70  73  78
+ 38 141 144 148 151 154 166 169
+ 46  53  58  61 112 134 137 147
+% time elapsed: 0.12 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=1129
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=1137
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=8
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=0.008795074758135445
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=8
+%%%mzn-stat: objective=175
+%%%mzn-stat: engineStatisticsNumDecisions=1130
+%%%mzn-stat: engineStatisticsNumConflicts=1
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=4754
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=47
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=7
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=6
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=7
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=4
+%%%mzn-stat: notFirst/notLastNumber66Used=10855
+%%%mzn-stat: notFirst/notLastNumber66Unused=74865
+%%%mzn-stat: notFirst/notLastNumber67Used=10855
+%%%mzn-stat: notFirst/notLastNumber67Unused=74865
+%%%mzn-stat: notFirst/notLastNumber68Used=10855
+%%%mzn-stat: notFirst/notLastNumber68Unused=74865
+%%%mzn-stat: notFirst/notLastNumber69Used=10855
+%%%mzn-stat: notFirst/notLastNumber69Unused=74865
+%%%mzn-stat-end
+t_end = 175
+  2  24  54  57  66  77  80  91
+ 10  13  19  62  66 110 148 156
+146 150 153 157 162 165 169 172
+ 14  17  28  32  35  39  42  46
+ 69  73 108 111 115 120 128 134
+  0   3   6  10  14  17  20  24
+117 121 130 134 137 140 151 161
+  1  12  26  32  36  47  50  59
+% time elapsed: 0.13 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=1273
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=1289
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=8
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=0.041117145073700546
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=16
+%%%mzn-stat: objective=172
+%%%mzn-stat: engineStatisticsNumDecisions=1281
+%%%mzn-stat: engineStatisticsNumConflicts=1
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=5356
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=53
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=7
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=6
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=7
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=4
+%%%mzn-stat: notFirst/notLastNumber66Used=12253
+%%%mzn-stat: notFirst/notLastNumber66Unused=84858
+%%%mzn-stat: notFirst/notLastNumber67Used=12253
+%%%mzn-stat: notFirst/notLastNumber67Unused=84858
+%%%mzn-stat: notFirst/notLastNumber68Used=12253
+%%%mzn-stat: notFirst/notLastNumber68Unused=84858
+%%%mzn-stat: notFirst/notLastNumber69Used=12253
+%%%mzn-stat: notFirst/notLastNumber69Unused=84858
+%%%mzn-stat-end
+t_end = 172
+  0  20  73  88  91  97 153 157
+ 77  83  87 112 116 119 144 157
+128 132 135 139 143 146 150 153
+  9  19  28  34  37  44  58  94
+ 14  22  32  35  39  43 102 169
+  1   4   8  12  16  19  24 114
+  0   5  22  26  30  33  49 164
+  0   4   8  11  15  85 105 169
+% time elapsed: 0.14 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=1428
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=1454
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=22
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=0.07771664374140302
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=38
+%%%mzn-stat: objective=171
+%%%mzn-stat: engineStatisticsNumDecisions=1445
+%%%mzn-stat: engineStatisticsNumConflicts=3
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=6098
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=60
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=7
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.6666666666666666
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=5.333333333333333
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=10.666666666666666
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=4
+%%%mzn-stat: notFirst/notLastNumber66Used=13873
+%%%mzn-stat: notFirst/notLastNumber66Unused=96043
+%%%mzn-stat: notFirst/notLastNumber67Used=13873
+%%%mzn-stat: notFirst/notLastNumber67Unused=96043
+%%%mzn-stat: notFirst/notLastNumber68Used=13873
+%%%mzn-stat: notFirst/notLastNumber68Unused=96043
+%%%mzn-stat: notFirst/notLastNumber69Used=13873
+%%%mzn-stat: notFirst/notLastNumber69Unused=96043
+%%%mzn-stat-end
+t_end = 171
+ 15  20  65  68  73  77  81 165
+  5   8 112 115 119 140 144 147
+  6  62  85 133 137 140 145 148
+  0  24  28  45  57 123 126 131
+  0  38  54  58  62  70  77 168
+  0   3   6  13  17  20  24  51
+ 10  93 105 109 112 115 144 149
+ 96  99 104 107 151 157 164 168
+% time elapsed: 0.15 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=1561
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=1601
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=32
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=0.16302311055590257
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=64
+%%%mzn-stat: objective=169
+%%%mzn-stat: engineStatisticsNumDecisions=1591
+%%%mzn-stat: engineStatisticsNumConflicts=4
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=6902
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=67
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=7.75
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.5
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=6.25
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=10.5
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=4.75
+%%%mzn-stat: notFirst/notLastNumber66Used=15400
+%%%mzn-stat: notFirst/notLastNumber66Unused=107279
+%%%mzn-stat: notFirst/notLastNumber67Used=15400
+%%%mzn-stat: notFirst/notLastNumber67Unused=107279
+%%%mzn-stat: notFirst/notLastNumber68Used=15400
+%%%mzn-stat: notFirst/notLastNumber68Unused=107279
+%%%mzn-stat: notFirst/notLastNumber69Used=15400
+%%%mzn-stat: notFirst/notLastNumber69Unused=107279
+%%%mzn-stat-end
+t_end = 169
+ 10  20  49  64  67  77 144 157
+ 27  36  42  45  54  58  81 112
+  7  20  23  28  32  35  39  46
+  7  23  28 149 152 156 160 165
+  0   4  11  14  30  34 152 156
+  0   3   6  10  14  20  24 109
+ 36  43  49  53  57  71  77  80
+  4  45  49  52  56  60  63  68
+% time elapsed: 0.15 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=1669
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=1730
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=32
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=0.3179190751445087
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=90
+%%%mzn-stat: objective=137
+%%%mzn-stat: engineStatisticsNumDecisions=1719
+%%%mzn-stat: engineStatisticsNumConflicts=4
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=7626
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=74
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=7.75
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.5
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=6.25
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=10.5
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=4.75
+%%%mzn-stat: notFirst/notLastNumber66Used=16881
+%%%mzn-stat: notFirst/notLastNumber66Unused=117985
+%%%mzn-stat: notFirst/notLastNumber67Used=16881
+%%%mzn-stat: notFirst/notLastNumber67Unused=117985
+%%%mzn-stat: notFirst/notLastNumber68Used=16881
+%%%mzn-stat: notFirst/notLastNumber68Unused=117985
+%%%mzn-stat: notFirst/notLastNumber69Used=16881
+%%%mzn-stat: notFirst/notLastNumber69Unused=117985
+%%%mzn-stat-end
+t_end = 137
+ 16  20  37 102 107 114 118 124
+ 27  34  38  43  49  62  66 122
+  0   4  23 103 115 122 129 133
+ 20  23  28  48  51  55  58  62
+  3   7  11  26  30  67  70 134
+  0   4   8  12  16  20  24  28
+ 72 105 110 114 119 122 126 129
+  9  12  17  33  42  46  55  59
+% time elapsed: 0.16 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=1780
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=1860
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=42
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=0.4774193548387097
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=126
+%%%mzn-stat: objective=136
+%%%mzn-stat: engineStatisticsNumDecisions=1848
+%%%mzn-stat: engineStatisticsNumConflicts=5
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=8290
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=81
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.6
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.4
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.4
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=7
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=9
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=5
+%%%mzn-stat: notFirst/notLastNumber66Used=18395
+%%%mzn-stat: notFirst/notLastNumber66Unused=128884
+%%%mzn-stat: notFirst/notLastNumber67Used=18395
+%%%mzn-stat: notFirst/notLastNumber67Unused=128884
+%%%mzn-stat: notFirst/notLastNumber68Used=18395
+%%%mzn-stat: notFirst/notLastNumber68Unused=128884
+%%%mzn-stat: notFirst/notLastNumber69Used=18395
+%%%mzn-stat: notFirst/notLastNumber69Unused=128884
+%%%mzn-stat-end
+t_end = 136
+ 14  20  52  61  64  70  73  79
+ 27  34  54  69  77  88  92  96
+  6  10  30 116 120 123 127 130
+ 20  23  28  43  49  55 110 114
+  2   6  10  19  23  83 126 133
+  0   3   6  13  17  20  24  68
+ 13  17  32  46  56  59  63  80
+  7  10  14  32  38  42  45  49
+% time elapsed: 0.17 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=1886
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=1988
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=42
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=0.6800804828973843
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=160
+%%%mzn-stat: objective=134
+%%%mzn-stat: engineStatisticsNumDecisions=1975
+%%%mzn-stat: engineStatisticsNumConflicts=5
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=8978
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=87
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.6
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.4
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.4
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=7
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=9
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=5
+%%%mzn-stat: notFirst/notLastNumber66Used=19806
+%%%mzn-stat: notFirst/notLastNumber66Unused=138648
+%%%mzn-stat: notFirst/notLastNumber67Used=19806
+%%%mzn-stat: notFirst/notLastNumber67Unused=138648
+%%%mzn-stat: notFirst/notLastNumber68Used=19806
+%%%mzn-stat: notFirst/notLastNumber68Unused=138648
+%%%mzn-stat: notFirst/notLastNumber69Used=19806
+%%%mzn-stat: notFirst/notLastNumber69Unused=138648
+%%%mzn-stat-end
+t_end = 134
+ 10  20  73 108 111 115 118 130
+ 27  34  55  60  64  72  76 122
+ 10  20  23  50 106 118 122 125
+ 17  25  28  42  45 115 122 127
+  1  13  17  21  30  35  38  42
+  0   3   6  10  14  20  24  60
+ 47  51  54  58  61  64  86  89
+ 82  85  89  92  96 100 106 110
+% time elapsed: 0.18 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=2002
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=2122
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=42
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=0.8430725730442978
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=194
+%%%mzn-stat: objective=128
+%%%mzn-stat: engineStatisticsNumDecisions=2108
+%%%mzn-stat: engineStatisticsNumConflicts=5
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=9638
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=93
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.6
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.4
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.4
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=7
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=9
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=5
+%%%mzn-stat: notFirst/notLastNumber66Used=21197
+%%%mzn-stat: notFirst/notLastNumber66Unused=149237
+%%%mzn-stat: notFirst/notLastNumber67Used=21197
+%%%mzn-stat: notFirst/notLastNumber67Unused=149237
+%%%mzn-stat: notFirst/notLastNumber68Used=21197
+%%%mzn-stat: notFirst/notLastNumber68Unused=149237
+%%%mzn-stat: notFirst/notLastNumber69Used=21197
+%%%mzn-stat: notFirst/notLastNumber69Unused=149237
+%%%mzn-stat-end
+t_end = 128
+ 13  20  33  51  56  61  65  69
+ 27  34  38  41  47  50  54  58
+  6  14  23  29  37  43  68  73
+  6  10  28  38  41  62  66  70
+  0   4  10  17  30  34  60  82
+  0   3   6  10  17  20  24 124
+ 13  17  23  47 103 106 111 118
+ 17  39  44  54  94  98 101 108
+% time elapsed: 0.18 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=2114
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=2257
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=50
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=1.0137350465219317
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=236
+%%%mzn-stat: objective=124
+%%%mzn-stat: engineStatisticsNumDecisions=2242
+%%%mzn-stat: engineStatisticsNumConflicts=6
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=10344
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=100
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.5
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.3333333333333333
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.5
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=7
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=8
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=5.166666666666667
+%%%mzn-stat: notFirst/notLastNumber66Used=22657
+%%%mzn-stat: notFirst/notLastNumber66Unused=159881
+%%%mzn-stat: notFirst/notLastNumber67Used=22657
+%%%mzn-stat: notFirst/notLastNumber67Unused=159881
+%%%mzn-stat: notFirst/notLastNumber68Used=22657
+%%%mzn-stat: notFirst/notLastNumber68Unused=159881
+%%%mzn-stat: notFirst/notLastNumber69Used=22657
+%%%mzn-stat: notFirst/notLastNumber69Unused=159881
+%%%mzn-stat-end
+t_end = 124
+ 14  20  42  51  54  61  92  96
+ 23  34  38  45  50  88  92  96
+  6  27  30  75  89  92  96 104
+ 15  18  28  38  78  82  85 120
+  0  13  17  21  26  61  64  68
+  0   3   6  10  14  20  24 110
+ 33  68  80  85  89  92 104 119
+  7  10  17  38  45  53  73  86
+% time elapsed: 0.19 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=2217
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=2383
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=50
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=1.1913554343264792
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=274
+%%%mzn-stat: objective=122
+%%%mzn-stat: engineStatisticsNumDecisions=2367
+%%%mzn-stat: engineStatisticsNumConflicts=6
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=10961
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=106
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.5
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.3333333333333333
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.5
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=7
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=8
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=5.166666666666667
+%%%mzn-stat: notFirst/notLastNumber66Used=23957
+%%%mzn-stat: notFirst/notLastNumber66Unused=168968
+%%%mzn-stat: notFirst/notLastNumber67Used=23957
+%%%mzn-stat: notFirst/notLastNumber67Unused=168968
+%%%mzn-stat: notFirst/notLastNumber68Used=23957
+%%%mzn-stat: notFirst/notLastNumber68Unused=168968
+%%%mzn-stat: notFirst/notLastNumber69Used=23957
+%%%mzn-stat: notFirst/notLastNumber69Unused=168968
+%%%mzn-stat-end
+t_end = 122
+  4  20  83  86  89  93  96 100
+ 27  34  66  77  82  85  89  92
+  0   8  30  43  55  60  71  74
+ 20  23  28  42  54  58  68 100
+  0   4  10  13  23  30  38  56
+  0   6   9  13  17  20  24  93
+ 32  45  48 104 107 110 114 118
+ 23  28  54  72  80  89 106 119
+% time elapsed: 0.20 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=2318
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=2505
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=50
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=1.3568862275449103
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=312
+%%%mzn-stat: objective=114
+%%%mzn-stat: engineStatisticsNumDecisions=2488
+%%%mzn-stat: engineStatisticsNumConflicts=6
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=11587
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=112
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.5
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.3333333333333333
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.5
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=7
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=8
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=5.166666666666667
+%%%mzn-stat: notFirst/notLastNumber66Used=25255
+%%%mzn-stat: notFirst/notLastNumber66Unused=178231
+%%%mzn-stat: notFirst/notLastNumber67Used=25255
+%%%mzn-stat: notFirst/notLastNumber67Unused=178231
+%%%mzn-stat: notFirst/notLastNumber68Used=25255
+%%%mzn-stat: notFirst/notLastNumber68Unused=178231
+%%%mzn-stat: notFirst/notLastNumber69Used=25255
+%%%mzn-stat: notFirst/notLastNumber69Unused=178231
+%%%mzn-stat-end
+t_end = 114
+  4  20  33  44  47  53  99 103
+ 27  34  38  41  45  72  76  79
+  1  10  30  34  38  41  53  70
+ 22  25  28  41  56  84  90  94
+  0   4   8  12  23  35  58  70
+  0   5   8  13  17  20  24 110
+ 11  15  49  73  81  87  91  94
+ 18  21  47  50  54  58  92 110
+% time elapsed: 0.21 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=2416
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=2625
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=50
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=1.5005714285714287
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=350
+%%%mzn-stat: objective=111
+%%%mzn-stat: engineStatisticsNumDecisions=2607
+%%%mzn-stat: engineStatisticsNumConflicts=6
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=12297
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=119
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.5
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.3333333333333333
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.5
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=7
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=8
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=5.166666666666667
+%%%mzn-stat: notFirst/notLastNumber66Used=26764
+%%%mzn-stat: notFirst/notLastNumber66Unused=188726
+%%%mzn-stat: notFirst/notLastNumber67Used=26764
+%%%mzn-stat: notFirst/notLastNumber67Unused=188726
+%%%mzn-stat: notFirst/notLastNumber68Used=26764
+%%%mzn-stat: notFirst/notLastNumber68Unused=188726
+%%%mzn-stat: notFirst/notLastNumber69Used=26764
+%%%mzn-stat: notFirst/notLastNumber69Unused=188726
+%%%mzn-stat-end
+t_end = 111
+  4  20  34  42  45  49  52  56
+ 23  34  38  46  52  57  61  65
+  2  10  30  34  43  58  67  73
+  0  17  28  49  53  61  74  78
+  0   6  10  22  26  76  81  85
+  1   6   9  13  17  20  24  28
+ 13  17  27  38  41  79  83 107
+  5  13  46  56  64  68  72  87
+% time elapsed: 0.21 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=2516
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=2744
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=67
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=1.6286443148688046
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=405
+%%%mzn-stat: objective=85
+%%%mzn-stat: engineStatisticsNumDecisions=2725
+%%%mzn-stat: engineStatisticsNumConflicts=8
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=13214
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=126
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.75
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.25
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.625
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=7.25
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=8.375
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=5.25
+%%%mzn-stat: notFirst/notLastNumber66Used=28344
+%%%mzn-stat: notFirst/notLastNumber66Unused=199956
+%%%mzn-stat: notFirst/notLastNumber67Used=28344
+%%%mzn-stat: notFirst/notLastNumber67Unused=199956
+%%%mzn-stat: notFirst/notLastNumber68Used=28344
+%%%mzn-stat: notFirst/notLastNumber68Unused=199956
+%%%mzn-stat: notFirst/notLastNumber69Used=28344
+%%%mzn-stat: notFirst/notLastNumber69Unused=199956
+%%%mzn-stat-end
+t_end = 85
+ 15  20  39  42  49  53  59  67
+ 27  34  40  43  47  54  62  66
+ 11  18  30  34  48  62  67  71
+ 22  25  28  55  58  63  66  70
+  0   4   8  11  23  34  45  50
+  0   4   7  12  16  20  24  63
+  0  17  29  39  42  45  51  57
+  1  38  51  54  58  74  77  82
+% time elapsed: 0.22 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=2596
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=2858
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=71
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=1.9041287613715885
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=464
+%%%mzn-stat: objective=84
+%%%mzn-stat: engineStatisticsNumDecisions=2838
+%%%mzn-stat: engineStatisticsNumConflicts=9
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=13809
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=132
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.222222222222221
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.2222222222222222
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.6666666666666666
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=6.777777777777778
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=7.888888888888889
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=4.888888888888889
+%%%mzn-stat: notFirst/notLastNumber66Used=29638
+%%%mzn-stat: notFirst/notLastNumber66Unused=209276
+%%%mzn-stat: notFirst/notLastNumber67Used=29638
+%%%mzn-stat: notFirst/notLastNumber67Unused=209276
+%%%mzn-stat: notFirst/notLastNumber68Used=29638
+%%%mzn-stat: notFirst/notLastNumber68Unused=209276
+%%%mzn-stat: notFirst/notLastNumber69Used=29638
+%%%mzn-stat: notFirst/notLastNumber69Unused=209276
+%%%mzn-stat-end
+t_end = 84
+  0  20  36  40  45  57  70  80
+ 23  34  40  43  50  54  62  65
+  6  16  30  35  39  42  74  77
+  9  19  28  55  58  62  70  80
+  4   9  14  22  26  34  51  60
+  0   3   8  12  17  20  24  28
+ 10  17  31  44  47  50  55  66
+  1  12  47  51  58  63  66  77
+% time elapsed: 0.23 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=2682
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=3008
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=77
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=2.520279255319149
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=572
+%%%mzn-stat: objective=83
+%%%mzn-stat: engineStatisticsNumDecisions=2987
+%%%mzn-stat: engineStatisticsNumConflicts=10
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=14585
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=140
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.2
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.7
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=6.6
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=10.4
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=4.8
+%%%mzn-stat: notFirst/notLastNumber66Used=31401
+%%%mzn-stat: notFirst/notLastNumber66Unused=221818
+%%%mzn-stat: notFirst/notLastNumber67Used=31401
+%%%mzn-stat: notFirst/notLastNumber67Unused=221818
+%%%mzn-stat: notFirst/notLastNumber68Used=31401
+%%%mzn-stat: notFirst/notLastNumber68Unused=221818
+%%%mzn-stat: notFirst/notLastNumber69Used=31401
+%%%mzn-stat: notFirst/notLastNumber69Unused=221818
+%%%mzn-stat-end
+t_end = 83
+ 11  20  36  39  46  50  53  70
+ 23  34  38  42  54  57  61  64
+  0  15  30  34  39  42  54  58
+  8  17  28  55  61  69  72  79
+  2   6  14  20  26  35  48  77
+  1   4   7  11  17  20  24  42
+  9  13  38  42  46  50  61  65
+ 18  30  52  57  65  69  72  76
+% time elapsed: 0.24 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=2749
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=3117
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=77
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=2.9268527430221365
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=635
+%%%mzn-stat: objective=82
+%%%mzn-stat: engineStatisticsNumDecisions=3095
+%%%mzn-stat: engineStatisticsNumConflicts=10
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=15251
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=146
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.2
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.7
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=6.6
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=10.4
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=4.8
+%%%mzn-stat: notFirst/notLastNumber66Used=32786
+%%%mzn-stat: notFirst/notLastNumber66Unused=231640
+%%%mzn-stat: notFirst/notLastNumber67Used=32786
+%%%mzn-stat: notFirst/notLastNumber67Unused=231640
+%%%mzn-stat: notFirst/notLastNumber68Used=32786
+%%%mzn-stat: notFirst/notLastNumber68Unused=231640
+%%%mzn-stat: notFirst/notLastNumber69Used=32786
+%%%mzn-stat: notFirst/notLastNumber69Unused=231640
+%%%mzn-stat-end
+t_end = 82
+ 13  20  43  47  50  54  58  75
+ 27  34  43  46  51  54  62  65
+  2  24  30  46  69  72  76  79
+  1  25  28  55  58  62  67  78
+  4  10  14  18  23  27  43  58
+  2   6   9  13  17  20  24  39
+ 10  14  35  40  43  46  51  78
+ 33  39  51  54  58  62  68  73
+% time elapsed: 0.24 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=2805
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=3207
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=77
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=3.2666043030869973
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=698
+%%%mzn-stat: objective=81
+%%%mzn-stat: engineStatisticsNumDecisions=3184
+%%%mzn-stat: engineStatisticsNumConflicts=10
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=15827
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=151
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.2
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.7
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=6.6
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=10.4
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=4.8
+%%%mzn-stat: notFirst/notLastNumber66Used=33931
+%%%mzn-stat: notFirst/notLastNumber66Unused=239679
+%%%mzn-stat: notFirst/notLastNumber67Used=33931
+%%%mzn-stat: notFirst/notLastNumber67Unused=239679
+%%%mzn-stat: notFirst/notLastNumber68Used=33931
+%%%mzn-stat: notFirst/notLastNumber68Unused=239679
+%%%mzn-stat: notFirst/notLastNumber69Used=33931
+%%%mzn-stat: notFirst/notLastNumber69Unused=239679
+%%%mzn-stat-end
+t_end = 81
+ 14  20  36  46  49  57  60  65
+ 23  34  38  43  49  53  62  67
+  0  10  30  34  39  45  63  72
+  0   6  28  55  59  64  67  71
+  2   6  14  22  26  34  51  60
+  1   4   9  13  17  20  24  41
+  7  11  18  39  42  45  49  52
+  4  38  42  52  58  71  74  78
+% time elapsed: 0.25 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=2876
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=3323
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=77
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=3.6289497442070417
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=761
+%%%mzn-stat: objective=80
+%%%mzn-stat: engineStatisticsNumDecisions=3299
+%%%mzn-stat: engineStatisticsNumConflicts=10
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=16482
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=157
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.2
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.7
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=6.6
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=10.4
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=4.8
+%%%mzn-stat: notFirst/notLastNumber66Used=35356
+%%%mzn-stat: notFirst/notLastNumber66Unused=249559
+%%%mzn-stat: notFirst/notLastNumber67Used=35356
+%%%mzn-stat: notFirst/notLastNumber67Unused=249559
+%%%mzn-stat: notFirst/notLastNumber68Used=35356
+%%%mzn-stat: notFirst/notLastNumber68Unused=249559
+%%%mzn-stat: notFirst/notLastNumber69Used=35356
+%%%mzn-stat: notFirst/notLastNumber69Unused=249559
+%%%mzn-stat-end
+t_end = 80
+  4  20  32  43  50  55  58  73
+ 27  34  41  48  52  58  62  65
+  6  23  30  34  38  47  54  77
+ 20  25  28  55  64  69  72  76
+  0   4  10  13  23  27  46  77
+  0   3   8  13  17  20  24  72
+ 13  17  30  40  43  46  62  65
+ 17  39  51  54  58  62  68  72
+% time elapsed: 0.26 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=2949
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=3432
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=88
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=3.9155011655011656
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=835
+%%%mzn-stat: objective=79
+%%%mzn-stat: engineStatisticsNumDecisions=3407
+%%%mzn-stat: engineStatisticsNumConflicts=11
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=17072
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=162
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=7.818181818181818
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.18181818181818182
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.6363636363636364
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=6.818181818181818
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=10.181818181818182
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=4.818181818181818
+%%%mzn-stat: notFirst/notLastNumber66Used=36600
+%%%mzn-stat: notFirst/notLastNumber66Unused=258401
+%%%mzn-stat: notFirst/notLastNumber67Used=36600
+%%%mzn-stat: notFirst/notLastNumber67Unused=258401
+%%%mzn-stat: notFirst/notLastNumber68Used=36600
+%%%mzn-stat: notFirst/notLastNumber68Unused=258401
+%%%mzn-stat: notFirst/notLastNumber69Used=36600
+%%%mzn-stat: notFirst/notLastNumber69Unused=258401
+%%%mzn-stat-end
+t_end = 79
+ 13  20  38  42  49  53  61  66
+ 23  34  38  41  45  55  62  68
+  6  19  30  49  54  57  65  74
+ 22  25  28  55  61  65  71  75
+  5   9  14  17  26  35  48  76
+  0   3   9  13  17  20  24  28
+ 10  17  35  39  42  45  58  61
+  9  31  45  48  58  65  68  72
+% time elapsed: 0.27 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=3038
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=3581
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=101
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=4.3649818486456295
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=947
+%%%mzn-stat: objective=78
+%%%mzn-stat: engineStatisticsNumDecisions=3555
+%%%mzn-stat: engineStatisticsNumConflicts=13
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=18068
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=171
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=7.6923076923076925
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.23076923076923078
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.6153846153846154
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=6.538461538461538
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=11.692307692307692
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=4.615384615384615
+%%%mzn-stat: notFirst/notLastNumber66Used=38680
+%%%mzn-stat: notFirst/notLastNumber66Unused=272878
+%%%mzn-stat: notFirst/notLastNumber67Used=38680
+%%%mzn-stat: notFirst/notLastNumber67Unused=272878
+%%%mzn-stat: notFirst/notLastNumber68Used=38680
+%%%mzn-stat: notFirst/notLastNumber68Unused=272878
+%%%mzn-stat: notFirst/notLastNumber69Used=38680
+%%%mzn-stat: notFirst/notLastNumber69Unused=272878
+%%%mzn-stat-end
+t_end = 78
+  5  20  35  44  49  55  60  65
+ 27  34  41  44  49  53  62  67
+  2  25  30  35  39  45  57  69
+  0  13  28  55  60  64  67  74
+  0   6  10  16  23  36  51  58
+  3   6   9  13  17  20  24  29
+ 13  17  31  39  42  45  49  74
+ 22  27  48  54  58  64  67  71
+% time elapsed: 0.28 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=3108
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=3696
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=107
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=4.862012987012987
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=1036
+%%%mzn-stat: objective=77
+%%%mzn-stat: engineStatisticsNumDecisions=3669
+%%%mzn-stat: engineStatisticsNumConflicts=14
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=18675
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=177
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=7.571428571428571
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.21428571428571427
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.5714285714285714
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=6.5
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=11
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=4.571428571428571
+%%%mzn-stat: notFirst/notLastNumber66Used=40053
+%%%mzn-stat: notFirst/notLastNumber66Unused=282196
+%%%mzn-stat: notFirst/notLastNumber67Used=40053
+%%%mzn-stat: notFirst/notLastNumber67Unused=282196
+%%%mzn-stat: notFirst/notLastNumber68Used=40053
+%%%mzn-stat: notFirst/notLastNumber68Unused=282196
+%%%mzn-stat: notFirst/notLastNumber69Used=40053
+%%%mzn-stat: notFirst/notLastNumber69Unused=282196
+%%%mzn-stat-end
+t_end = 77
+ 15  20  32  39  46  53  58  65
+ 27  34  38  41  50  54  62  66
+  0  19  30  43  47  56  62  71
+ 22  25  28  55  58  63  67  73
+  5  10  14  19  23  35  50  60
+  0   4   9  13  17  20  24  31
+  7  17  36  42  47  50  55  71
+  4  30  45  51  58  63  66  70
+% time elapsed: 0.28 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=3175
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=3808
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=107
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=5.382352941176471
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=1125
+%%%mzn-stat: objective=76
+%%%mzn-stat: engineStatisticsNumDecisions=3780
+%%%mzn-stat: engineStatisticsNumConflicts=14
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=19285
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=182
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=7.571428571428571
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.21428571428571427
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.5714285714285714
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=6.5
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=11
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=4.571428571428571
+%%%mzn-stat: notFirst/notLastNumber66Used=41348
+%%%mzn-stat: notFirst/notLastNumber66Unused=291106
+%%%mzn-stat: notFirst/notLastNumber67Used=41348
+%%%mzn-stat: notFirst/notLastNumber67Unused=291106
+%%%mzn-stat: notFirst/notLastNumber68Used=41348
+%%%mzn-stat: notFirst/notLastNumber68Unused=291106
+%%%mzn-stat: notFirst/notLastNumber69Used=41348
+%%%mzn-stat: notFirst/notLastNumber69Unused=291106
+%%%mzn-stat-end
+t_end = 76
+ 14  20  43  47  50  54  58  65
+ 27  34  39  47  51  54  62  65
+  0  26  30  34  38  46  62  70
+ 10  25  28  55  58  62  65  72
+  5  10  14  18  23  29  51  70
+  3   6   9  13  17  20  24  33
+ 10  14  30  39  42  46  55  58
+ 19  38  43  51  58  62  65  69
+% time elapsed: 0.29 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=3241
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=3926
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=137
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=5.917727967396842
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=1247
+%%%mzn-stat: objective=75
+%%%mzn-stat: engineStatisticsNumDecisions=3897
+%%%mzn-stat: engineStatisticsNumConflicts=15
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=19880
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=188
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=7.666666666666667
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.4
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.5333333333333333
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=6.8
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=11
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=4.8
+%%%mzn-stat: notFirst/notLastNumber66Used=42771
+%%%mzn-stat: notFirst/notLastNumber66Unused=300484
+%%%mzn-stat: notFirst/notLastNumber67Used=42771
+%%%mzn-stat: notFirst/notLastNumber67Unused=300484
+%%%mzn-stat: notFirst/notLastNumber68Used=42771
+%%%mzn-stat: notFirst/notLastNumber68Unused=300484
+%%%mzn-stat: notFirst/notLastNumber69Used=42771
+%%%mzn-stat: notFirst/notLastNumber69Unused=300484
+%%%mzn-stat-end
+t_end = 75
+  4  20  37  46  49  53  57  66
+ 27  34  40  44  50  53  61  64
+  6  23  30  36  41  46  69  72
+  0  20  28  54  57  61  66  71
+  0   4  10  14  23  28  50  70
+  0   3   9  13  17  20  24  36
+ 13  17  27  39  42  45  54  57
+ 20  23  43  50  57  61  64  68
+% time elapsed: 0.30 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=3286
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=4036
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=221
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=6.9836471754212095
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=1459
+%%%mzn-stat: objective=74
+%%%mzn-stat: engineStatisticsNumDecisions=4006
+%%%mzn-stat: engineStatisticsNumConflicts=23
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=20657
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=195
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.130434782608695
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.5652173913043478
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.5217391304347826
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=7.869565217391305
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=7.739130434782608
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=5.913043478260869
+%%%mzn-stat: notFirst/notLastNumber66Used=44263
+%%%mzn-stat: notFirst/notLastNumber66Unused=311320
+%%%mzn-stat: notFirst/notLastNumber67Used=44263
+%%%mzn-stat: notFirst/notLastNumber67Unused=311320
+%%%mzn-stat: notFirst/notLastNumber68Used=44263
+%%%mzn-stat: notFirst/notLastNumber68Unused=311320
+%%%mzn-stat: notFirst/notLastNumber69Used=44263
+%%%mzn-stat: notFirst/notLastNumber69Unused=311320
+%%%mzn-stat-end
+t_end = 74
+ 10  20  36  39  43  53  56  64
+ 23  34  40  43  49  52  60  63
+  6  20  30  34  39  56  67  70
+  0  14  28  53  56  60  63  70
+  0   4  17  22  26  33  49  67
+  0   3   6  10  14  20  24  28
+ 10  14  17  42  45  48  53  70
+ 14  26  46  49  56  60  63  67
+% time elapsed: 0.30 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=3328
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=4153
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=265
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=9.148326510955936
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=1687
+%%%mzn-stat: objective=73
+%%%mzn-stat: engineStatisticsNumDecisions=4122
+%%%mzn-stat: engineStatisticsNumConflicts=26
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=21350
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=202
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.538461538461538
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.5384615384615384
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.5
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=8.26923076923077
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=7.115384615384615
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=6.153846153846154
+%%%mzn-stat: notFirst/notLastNumber66Used=45712
+%%%mzn-stat: notFirst/notLastNumber66Unused=321485
+%%%mzn-stat: notFirst/notLastNumber67Used=45712
+%%%mzn-stat: notFirst/notLastNumber67Unused=321485
+%%%mzn-stat: notFirst/notLastNumber68Used=45712
+%%%mzn-stat: notFirst/notLastNumber68Unused=321485
+%%%mzn-stat: notFirst/notLastNumber69Used=45712
+%%%mzn-stat: notFirst/notLastNumber69Unused=321485
+%%%mzn-stat-end
+t_end = 73
+ 12  20  33  39  43  49  55  66
+ 23  34  38  41  46  51  59  62
+  6  17  30  38  45  55  59  70
+ 20  24  28  42  47  52  62  69
+  0   5  10  16  26  35  51  70
+  0   3   6  10  17  20  24  28
+ 13  17  20  48  52  55  59  66
+ 25  28  45  48  55  59  62  66
+% time elapsed: 0.31 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=3369
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=4249
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=265
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=10.840433043068957
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=1889
+%%%mzn-stat: objective=72
+%%%mzn-stat: engineStatisticsNumDecisions=4217
+%%%mzn-stat: engineStatisticsNumConflicts=26
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=21898
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=207
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.538461538461538
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.5384615384615384
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.5
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=8.26923076923077
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=7.115384615384615
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=6.153846153846154
+%%%mzn-stat: notFirst/notLastNumber66Used=46925
+%%%mzn-stat: notFirst/notLastNumber66Unused=330118
+%%%mzn-stat: notFirst/notLastNumber67Used=46925
+%%%mzn-stat: notFirst/notLastNumber67Unused=330118
+%%%mzn-stat: notFirst/notLastNumber68Used=46925
+%%%mzn-stat: notFirst/notLastNumber68Unused=330118
+%%%mzn-stat: notFirst/notLastNumber69Used=46925
+%%%mzn-stat: notFirst/notLastNumber69Unused=330118
+%%%mzn-stat-end
+t_end = 72
+ 14  20  33  38  43  50  54  63
+ 27  34  40  43  47  51  55  58
+  6  14  30  34  40  43  64  67
+ 21  25  28  41  47  51  60  68
+  0   4  10  19  23  27  59  64
+  0   3   6  10  17  20  24  36
+ 13  17  30  47  53  56  62  67
+  7  10  44  47  51  56  60  65
+% time elapsed: 0.32 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=3410
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=4351
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=321
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=12.736152608595726
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=2153
+%%%mzn-stat: objective=71
+%%%mzn-stat: engineStatisticsNumDecisions=4318
+%%%mzn-stat: engineStatisticsNumConflicts=31
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=22587
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=213
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.161290322580646
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.6774193548387096
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.4838709677419355
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=8.419354838709678
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=6.290322580645161
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=6.096774193548387
+%%%mzn-stat: notFirst/notLastNumber66Used=48398
+%%%mzn-stat: notFirst/notLastNumber66Unused=339744
+%%%mzn-stat: notFirst/notLastNumber67Used=48398
+%%%mzn-stat: notFirst/notLastNumber67Unused=339744
+%%%mzn-stat: notFirst/notLastNumber68Used=48398
+%%%mzn-stat: notFirst/notLastNumber68Unused=339744
+%%%mzn-stat: notFirst/notLastNumber69Used=48398
+%%%mzn-stat: notFirst/notLastNumber69Unused=339744
+%%%mzn-stat-end
+t_end = 71
+ 15  20  33  41  46  50  53  64
+ 27  34  38  41  47  50  54  57
+  0   8  30  34  38  43  60  68
+  0   4  28  38  42  49  60  64
+  0  10  14  19  23  31  58  68
+  1   4   7  11  17  20  24  67
+  7  14  30  44  53  56  61  64
+  5  11  17  45  49  56  63  68
+% time elapsed: 0.33 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=3464
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=4467
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=370
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=14.795612267741213
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=2440
+%%%mzn-stat: objective=70
+%%%mzn-stat: engineStatisticsNumDecisions=4433
+%%%mzn-stat: engineStatisticsNumConflicts=34
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=23227
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=219
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.029411764705882
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.6764705882352942
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.4411764705882353
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=8.647058823529411
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=6.117647058823529
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=6.205882352941177
+%%%mzn-stat: notFirst/notLastNumber66Used=49688
+%%%mzn-stat: notFirst/notLastNumber66Unused=349776
+%%%mzn-stat: notFirst/notLastNumber67Used=49688
+%%%mzn-stat: notFirst/notLastNumber67Unused=349776
+%%%mzn-stat: notFirst/notLastNumber68Used=49688
+%%%mzn-stat: notFirst/notLastNumber68Unused=349776
+%%%mzn-stat: notFirst/notLastNumber69Used=49688
+%%%mzn-stat: notFirst/notLastNumber69Unused=349776
+%%%mzn-stat-end
+t_end = 70
+  5  20  36  41  45  49  52  63
+ 27  34  38  42  46  49  53  56
+  0   9  30  35  39  42  64  67
+  2  21  28  38  41  49  59  63
+  0   8  13  17  23  53  59  67
+  1   5   9  13  17  20  24  30
+  8  12  29  44  53  56  60  63
+  5  13  17  32  48  56  60  67
+% time elapsed: 0.33 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=3492
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=4580
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=567
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=18.76288209606987
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=2928
+%%%mzn-stat: objective=69
+%%%mzn-stat: engineStatisticsNumDecisions=4545
+%%%mzn-stat: engineStatisticsNumConflicts=44
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=24331
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=229
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.454545454545455
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=1.0454545454545454
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.5909090909090909
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=10.454545454545455
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=5.2272727272727275
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=7.318181818181818
+%%%mzn-stat: notFirst/notLastNumber66Used=51514
+%%%mzn-stat: notFirst/notLastNumber66Unused=363207
+%%%mzn-stat: notFirst/notLastNumber67Used=51514
+%%%mzn-stat: notFirst/notLastNumber67Unused=363207
+%%%mzn-stat: notFirst/notLastNumber68Used=51514
+%%%mzn-stat: notFirst/notLastNumber68Unused=363207
+%%%mzn-stat: notFirst/notLastNumber69Used=51514
+%%%mzn-stat: notFirst/notLastNumber69Unused=363207
+%%%mzn-stat-end
+t_end = 69
+ 15  22  34  41  45  49  52  62
+ 14  34  38  41  45  49  53  56
+  0   4  30  37  49  58  63  66
+  0   4  18  27  31  37  41  45
+  0   4  11  19  23  28  56  62
+  0   4   7  11  15  20  26  41
+  7  11  33  45  52  55  60  65
+  8  11  17  30  49  55  59  66
+% time elapsed: 0.34 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=3508
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=4655
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=578
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=23.057142857142857
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=3373
+%%%mzn-stat: objective=68
+%%%mzn-stat: engineStatisticsNumDecisions=4619
+%%%mzn-stat: engineStatisticsNumConflicts=45
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=24972
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=234
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.555555555555555
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=1.0222222222222221
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.6
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=10.466666666666667
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=5.133333333333334
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=7.311111111111111
+%%%mzn-stat: notFirst/notLastNumber66Used=52617
+%%%mzn-stat: notFirst/notLastNumber66Unused=371670
+%%%mzn-stat: notFirst/notLastNumber67Used=52617
+%%%mzn-stat: notFirst/notLastNumber67Unused=371670
+%%%mzn-stat: notFirst/notLastNumber68Used=52617
+%%%mzn-stat: notFirst/notLastNumber68Unused=371670
+%%%mzn-stat: notFirst/notLastNumber69Used=52617
+%%%mzn-stat: notFirst/notLastNumber69Unused=371670
+%%%mzn-stat-end
+t_end = 68
+ 15  22  32  42  45  49  53  62
+ 14  34  38  41  46  49  53  57
+  0  27  30  34  38  42  53  58
+  0   4  18  27  30  35  38  49
+  0   4  11  19  23  34  38  61
+  1   4   7  11  15  20  26  64
+  7  11  25  45  52  56  61  64
+  3  11  17  45  49  55  60  65
+% time elapsed: 0.35 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=3534
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=4773
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=639
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=28.889796773517705
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=3917
+%%%mzn-stat: objective=67
+%%%mzn-stat: engineStatisticsNumDecisions=4736
+%%%mzn-stat: engineStatisticsNumConflicts=55
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=25797
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=242
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.872727272727273
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.8363636363636363
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.6363636363636364
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=10.254545454545454
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=4.672727272727273
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=6.963636363636364
+%%%mzn-stat: notFirst/notLastNumber66Used=54258
+%%%mzn-stat: notFirst/notLastNumber66Unused=383244
+%%%mzn-stat: notFirst/notLastNumber67Used=54258
+%%%mzn-stat: notFirst/notLastNumber67Unused=383244
+%%%mzn-stat: notFirst/notLastNumber68Used=54258
+%%%mzn-stat: notFirst/notLastNumber68Unused=383244
+%%%mzn-stat: notFirst/notLastNumber69Used=54258
+%%%mzn-stat: notFirst/notLastNumber69Unused=383244
+%%%mzn-stat-end
+t_end = 67
+ 14  22  30  36  39  43  52  62
+ 15  32  36  41  46  49  53  56
+  0   5   8  35  45  49  53  59
+  2  11  18  26  30  34  39  48
+  0   4  12  18  22  26  41  59
+  0   4   7  11  15  19  26  43
+  8  12  31  46  53  56  60  63
+  8  24  29  37  49  56  60  64
+% time elapsed: 0.36 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=3556
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=4869
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=643
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=33.93222427603204
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=4388
+%%%mzn-stat: objective=66
+%%%mzn-stat: engineStatisticsNumDecisions=4831
+%%%mzn-stat: engineStatisticsNumConflicts=56
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=26495
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=248
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.767857142857142
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.8392857142857143
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.625
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=10.125
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=4.714285714285714
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=6.875
+%%%mzn-stat: notFirst/notLastNumber66Used=55515
+%%%mzn-stat: notFirst/notLastNumber66Unused=392687
+%%%mzn-stat: notFirst/notLastNumber67Used=55515
+%%%mzn-stat: notFirst/notLastNumber67Unused=392687
+%%%mzn-stat: notFirst/notLastNumber68Used=55515
+%%%mzn-stat: notFirst/notLastNumber68Unused=392687
+%%%mzn-stat: notFirst/notLastNumber69Used=55515
+%%%mzn-stat: notFirst/notLastNumber69Unused=392687
+%%%mzn-stat-end
+t_end = 66
+ 11  22  31  35  38  42  52  62
+ 15  31  35  41  45  48  53  59
+  0   5   8  33  49  52  56  59
+  0   4  18  25  30  34  37  45
+  0   4  12  17  21  27  40  59
+  0   4   7  11  15  18  26  42
+  7  12  28  46  49  52  56  62
+ 20  24  28  37  49  56  59  63
+% time elapsed: 0.37 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=3577
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=4961
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=711
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=38.313041725458575
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=4930
+%%%mzn-stat: objective=65
+%%%mzn-stat: engineStatisticsNumDecisions=4922
+%%%mzn-stat: engineStatisticsNumConflicts=61
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=27535
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=256
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.918032786885245
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=0.7868852459016393
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.5737704918032787
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=10.229508196721312
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=4.672131147540983
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=7
+%%%mzn-stat: notFirst/notLastNumber66Used=57005
+%%%mzn-stat: notFirst/notLastNumber66Unused=404043
+%%%mzn-stat: notFirst/notLastNumber67Used=57005
+%%%mzn-stat: notFirst/notLastNumber67Unused=404043
+%%%mzn-stat: notFirst/notLastNumber68Used=57005
+%%%mzn-stat: notFirst/notLastNumber68Unused=404043
+%%%mzn-stat: notFirst/notLastNumber69Used=57005
+%%%mzn-stat: notFirst/notLastNumber69Unused=404043
+%%%mzn-stat-end
+t_end = 65
+ 13  22  30  36  39  45  51  61
+ 15  28  33  36  42  47  53  58
+  0   4   8  28  48  51  55  58
+  1   4  18  25  29  33  38  44
+  0   4  12  17  21  36  39  62
+  1   4   7  11  15  18  26  43
+  8  12  32  45  48  51  55  58
+ 21  24  32  40  49  55  58  62
+% time elapsed: 0.38 s
+----------
+%%%mzn-stat: 0AutonomousSearchNumBackupCalled=3589
+%%%mzn-stat: 0AutonomousSearchNumPredicatesRemoved=0
+%%%mzn-stat: 0AutonomousSearchNumCalls=5128
+%%%mzn-stat: 0AutonomousSearchNumPredicatesAdded=1077
+%%%mzn-stat: 0AutonomousSearchAverageSizeOfHeap=52.57917316692668
+%%%mzn-stat: 0AutonomousSearchNumAssignedPredicatesEncountered=5903
+%%%mzn-stat: objective=64
+%%%mzn-stat: engineStatisticsNumDecisions=5088
+%%%mzn-stat: engineStatisticsNumConflicts=92
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=29987
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=274
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.858695652173912
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=1.173913043478261
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.40217391304347827
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=12.032608695652174
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=4.326086956521739
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=8.108695652173912
+%%%mzn-stat: notFirst/notLastNumber66Used=60129
+%%%mzn-stat: notFirst/notLastNumber66Unused=427662
+%%%mzn-stat: notFirst/notLastNumber67Used=60129
+%%%mzn-stat: notFirst/notLastNumber67Unused=427662
+%%%mzn-stat: notFirst/notLastNumber68Used=60129
+%%%mzn-stat: notFirst/notLastNumber68Unused=427662
+%%%mzn-stat: notFirst/notLastNumber69Used=60129
+%%%mzn-stat: notFirst/notLastNumber69Unused=427662
+%%%mzn-stat-end
+t_end = 64
+ 12  21  25  28  31  35  53  57
+ 15  34  38  42  46  49  53  60
+  0   5   8  23  28  53  57  61
+  2   5  14  18  25  31  38  46
+  0   4  11  17  21  35  42  57
+  0   4   8  12  18  25  38  60
+  7  12  31  46  49  53  57  60
+ 18  27  31  34  38  42  45  50
+% time elapsed: 0.40 s
+----------
+==========
+% time elapsed: 0.40 s
+%%%mzn-stat: engineStatisticsNumDecisions=5088
+%%%mzn-stat: engineStatisticsNumConflicts=93
+%%%mzn-stat: engineStatisticsNumRestarts=0
+%%%mzn-stat: engineStatisticsNumPropagations=30125
+%%%mzn-stat: engineStatisticsTimeSpentInSolver=274
+%%%mzn-stat: learnedClauseStatisticsAverageConflictSize=8.858695652173912
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsRecursive=1.173913043478261
+%%%mzn-stat: learnedClauseStatisticsAverageNumberOfRemovedLiteralsSemantic=0.40217391304347827
+%%%mzn-stat: learnedClauseStatisticsNumUnitClausesLearned=0
+%%%mzn-stat: learnedClauseStatisticsAverageLearnedClauseLength=12.032608695652174
+%%%mzn-stat: learnedClauseStatisticsAverageBacktrackAmount=4.326086956521739
+%%%mzn-stat: learnedClauseStatisticsAverageLbd=8.108695652173912
+%%%mzn-stat: notFirst/notLastNumber66Used=60138
+%%%mzn-stat: notFirst/notLastNumber66Unused=427792
+%%%mzn-stat: notFirst/notLastNumber67Used=60138
+%%%mzn-stat: notFirst/notLastNumber67Unused=427792
+%%%mzn-stat: notFirst/notLastNumber68Used=60138
+%%%mzn-stat: notFirst/notLastNumber68Unused=427792
+%%%mzn-stat: notFirst/notLastNumber69Used=60138
+%%%mzn-stat: notFirst/notLastNumber69Unused=427792
+%%%mzn-stat-end

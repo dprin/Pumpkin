@@ -2,4 +2,3 @@ target/
 .vscode/
 .idea/
 .direnv/
-tests/

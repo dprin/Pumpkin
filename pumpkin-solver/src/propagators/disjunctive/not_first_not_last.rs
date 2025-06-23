@@ -3,6 +3,7 @@ use std::{cell::RefCell, collections::VecDeque, fmt::Debug, hash::Hash};
 use crate::{
     basic_types::{Inconsistency, PropagationStatusCP},
     constraints::{theta::Theta, Task},
+    create_statistics_struct,
     engine::{
         opaque_domain_event::OpaqueDomainEvent,
         propagation::{
@@ -14,6 +15,7 @@ use crate::{
     },
     predicate,
     predicates::{Predicate, PropositionalConjunction},
+    statistics::Statistic,
     variables::{IntegerVariable, TransformableVariable},
 };
 
@@ -24,8 +26,16 @@ enum ExplanationStrategy {
     Advanced,
 }
 
-const STRATEGY: ExplanationStrategy = ExplanationStrategy::Normal;
-const MAX_SIZE_TO_SUBSET: usize = 10;
+const STRATEGY: ExplanationStrategy = ExplanationStrategy::Naive;
+const MAX_SIZE_TO_SUBSET: usize = 5;
+
+create_statistics_struct!(NlUses {
+    used: usize,
+    unused: usize,
+});
+
+static mut USED: usize = 0;
+static mut UNUSED: usize = 0;
 
 // copied from https://stackoverflow.com/questions/40718975/how-to-get-every-subset-of-a-vector-in-rust
 fn powerset<T: Copy>(s: &Vec<T>) -> Vec<Vec<T>> {
@@ -78,7 +88,13 @@ fn handle_set<'a, Var: IntegerVariable + Copy + Debug + 'static>(
     match STRATEGY {
         ExplanationStrategy::Advanced => {
             if tasks.len() > MAX_SIZE_TO_SUBSET {
+                unsafe {
+                    UNUSED += 1;
+                }
                 return tasks;
+            }
+            unsafe {
+                USED += 1;
             }
 
             let mut current_best = (tasks.clone(), i32::MAX);
@@ -377,7 +393,16 @@ impl<Var: IntegerVariable + Copy + Hash + Eq + Debug + 'static> Propagator
         );
     }
 
-    fn log_statistics(&self, _statistic_logger: crate::statistics::StatisticLogger) {}
+    fn log_statistics(&self, statistic_logger: crate::statistics::StatisticLogger) {
+        unsafe {
+            let log = NlUses {
+                used: USED,
+                unused: UNUSED,
+            };
+
+            log.log(statistic_logger);
+        };
+    }
 }
 
 #[cfg(test)]
